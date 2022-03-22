@@ -11,7 +11,7 @@ how to :ref:`installation` the project.
 
 .. note::
 
-   What is this all about dude 
+   What is this all about dudes and dudettes
 
 .. note::
 
