@@ -11,6 +11,12 @@ how to :ref:`installation` the project.
 
 **HOw are you doing** 
 
+Lets add some stuff and see it if takes effect
+
+If not we will add some stuff another way if we have to 
+
+I dont know what else to do
+
 .. note::
 
    What is this all about dudes and dudettes
