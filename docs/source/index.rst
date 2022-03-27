@@ -26,3 +26,5 @@ Contents
 
    usage
    api
+   foo
+   bar
