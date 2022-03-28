@@ -11,6 +11,7 @@ get up and running in minutes.
 
 **Websaw** is truly the ** *Only tool you will ever need to develop killer apps* **
 
+
 Contents
 --------
 
@@ -18,3 +19,5 @@ Contents
 
    usage
    api
+   foo
+   bar
