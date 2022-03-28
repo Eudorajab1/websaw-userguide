@@ -1,9 +1,9 @@
-Template for the Read the Docs tutorial
-=======================================
+Websaw Use Guide Template
+========================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This usr guide template is for the ultra fast, super flexible and ultimate web framework  possibly the **only tool you will ever need** to develop
+robust, seucure, lightning fast *fully featured web applications*.
 
-Read the tutorial here:
+Please feel free to let us know what you think and let us know of any issues or enhancements that would benefit the project
 
-https://docs.readthedocs.io/en/stable/tutorial/
+Tutorials and examples are hoseted at https://https://eudorajab1.github.io/ where you are free to add any examples, tutorials or to showcase apps you have developed using this awesome tool.
