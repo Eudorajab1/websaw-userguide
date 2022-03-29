@@ -22,7 +22,7 @@ Quick Start
    
 In order to get started make sure that your os meets the following minimal requirements.
 
-* Pyhton > 3.5
+* Pyhton >= 3.7
 * pip
 
 For the sake of keeping the instructions generic let us assume that we are woking on a WSL Ubuntu
