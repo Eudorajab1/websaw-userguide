@@ -1,5 +1,5 @@
-Welcome to WebSaw's documentation!
-==================================
+Welcome to WebSaw!
+==================
 
 **Websaw** (Web */Software Application Warehouse/*) is a lightweight, superfast web application framework
 that offers feature rich **'out of the box functionality'** coupled with an unparalleled level of 
@@ -11,10 +11,9 @@ get up and running in minutes.
 
 **Websaw** is truly the ** *Only tool you will ever need to develop killer apps* **
 
-Contents
---------
-
 .. toctree::
+   :hidden:
 
-   usage
-   api
+   configuration/index
+   installation/index
+   

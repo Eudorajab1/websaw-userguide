@@ -12,6 +12,9 @@ copyright = u"%d WebSaw" % year
 exclude_patterns = ["_build"]
 
 html_theme = "alabaster"
+html_static_path = ['_static']
+
+
 html_sidebars = {
     "**": [
         "about.html",
@@ -22,6 +25,7 @@ html_sidebars = {
     ]
 }
 html_theme_options = {
+    "logo": "websaw-logos_transparent.png",
     "description": "A light, fully fucntional, ultra fast, flexible and feauture rich web framework",
     "github_user": "Eudorajab1",
     "github_repo": "websaw",
