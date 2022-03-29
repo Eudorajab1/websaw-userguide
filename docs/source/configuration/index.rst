@@ -1,7 +1,0 @@
-Configuration
-=============
-
-.. toctree::
-
-   foo
-   api

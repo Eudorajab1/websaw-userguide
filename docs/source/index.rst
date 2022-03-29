@@ -9,11 +9,15 @@ that offers feature rich **'out of the box functionality'** coupled with an unpa
 irrespective of skill level or experience. In fact only a minimal knowledge of python is required to
 get up and running in minutes.
 
-**Websaw** is truly the ** *Only tool you will ever need to develop killer apps* **
+**Websaw** is truly the *Only tool you will ever need to develop killer apps*
+
+*Cant Wait to get started ?*
+
+Head over to our :ref:`quick_start_label` section
 
 .. toctree::
    :hidden:
-
-   configuration/index
-   installation/index
+   
+   overview
+   installation
    

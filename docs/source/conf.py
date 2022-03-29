@@ -28,7 +28,7 @@ html_theme_options = {
     "logo": "websaw-logos_transparent.png",
     "description": "A light, fully fucntional, ultra fast, flexible and feauture rich web framework",
     "github_user": "Eudorajab1",
-    "github_repo": "websaw",
     "fixed_sidebar": True,
+    "show_powered_by": False,
     "tidelift_url": "https://tidelift.com/subscription/pkg/pypi-alabaster?utm_source=pypi-alabaster&utm_medium=referral&utm_campaign=docs",  # noqa
 }
