@@ -1,11 +1,16 @@
+
+.. _run_websaw_label:
+
+
 ==============
 Running Websaw
 ==============
 
 For Development purposes the traditional way to run Websaw is from the command line as follows:
+
 ::
 
-    websaw run apps
+    python -m websaw run apps
 
 This will attempt to start all applications in the directory apps but you can store your apps in any folder of your
 choice. Just make sure to let websaw know the root folder for your applications.
@@ -45,7 +50,7 @@ Starting Websaw form the command line offers you many options to pass in paramte
 
 For example::
 
-    websaw run apps -H 0.0.0.0 -P 8010
+    python -m websaw run apps -H 0.0.0.0 -P 8010
 
 tells Websaw that we want it to run on IP 0.0.0.0 and Port 8010 and you will see the following:
 ::
@@ -68,17 +73,17 @@ This is very usefull for development where multiple developers are working on th
 Websaw CLI
 ----------
 
-In order to see the cli options available to you enter the following:
+In order to see the cli options available to you enter the following from inside your activared venv:
 ::
 
-    websaw --help
+    python websaw --help
 
 this will show you the list of all available options that can be used with the Websaw Command Line.
 
 To get help on any of these options simply type::
 
     websaw <command> --help
-    eg: websaw run --help
+    eg: python websaw run --help
 
 This will deisplay the following:-
 ::

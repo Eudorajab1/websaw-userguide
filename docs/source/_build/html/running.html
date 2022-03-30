@@ -16,6 +16,7 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Developing Your Apps" href="develop.html" />
     <link rel="prev" title="Installation" href="installation.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -51,6 +52,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#websaw-cli">Websaw CLI</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developing Your Apps</a></li>
 </ul>
 
 <div class="relations">
@@ -58,6 +60,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="develop.html" title="next chapter">Developing Your Apps</a></li>
   </ul></li>
 </ul>
 </div>
@@ -80,9 +83,9 @@
           <div class="body" role="main">
             
   <div class="section" id="running-websaw">
-<h1>Running Websaw<a class="headerlink" href="#running-websaw" title="Permalink to this headline">¶</a></h1>
+<span id="run-websaw-label"></span><h1>Running Websaw<a class="headerlink" href="#running-websaw" title="Permalink to this headline">¶</a></h1>
 <p>For Development purposes the traditional way to run Websaw is from the command line as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websaw</span> <span class="n">run</span> <span class="n">apps</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="n">run</span> <span class="n">apps</span>
 </pre></div>
 </div>
 <p>This will attempt to start all applications in the directory apps but you can store your apps in any folder of your
@@ -119,7 +122,7 @@ ___     ______  / /_  _________ __      __
 </div>
 <p>Starting Websaw form the command line offers you many options to pass in paramters to change the behavbiour of your Websaw instance.</p>
 <p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websaw</span> <span class="n">run</span> <span class="n">apps</span> <span class="o">-</span><span class="n">H</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="o">-</span><span class="n">P</span> <span class="mi">8010</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="n">run</span> <span class="n">apps</span> <span class="o">-</span><span class="n">H</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="o">-</span><span class="n">P</span> <span class="mi">8010</span>
 </pre></div>
 </div>
 <p>tells Websaw that we want it to run on IP 0.0.0.0 and Port 8010 and you will see the following:</p>
@@ -139,14 +142,14 @@ You can use the –watch setting in the cli to change this behaviour.</p>
 </div>
 <div class="section" id="websaw-cli">
 <h2>Websaw CLI<a class="headerlink" href="#websaw-cli" title="Permalink to this headline">¶</a></h2>
-<p>In order to see the cli options available to you enter the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websaw</span> <span class="o">--</span><span class="n">help</span>
+<p>In order to see the cli options available to you enter the following from inside your activared venv:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">websaw</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 </div>
 <p>this will show you the list of all available options that can be used with the Websaw Command Line.</p>
 <p>To get help on any of these options simply type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websaw</span> <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">help</span>
-<span class="n">eg</span><span class="p">:</span> <span class="n">websaw</span> <span class="n">run</span> <span class="o">--</span><span class="n">help</span>
+<span class="n">eg</span><span class="p">:</span> <span class="n">python</span> <span class="n">websaw</span> <span class="n">run</span> <span class="o">--</span><span class="n">help</span>
 </pre></div>
 </div>
 <p>This will deisplay the following:-</p>

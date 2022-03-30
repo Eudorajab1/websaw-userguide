@@ -39,4 +39,4 @@ All in all *Websaw* is truly a remarkable framework on which you can build amazi
 
 *Cant Wait to get started ?*
 
-Head over to our :ref:`quick_start_label` section
+Head on over to the :ref:`quick_start_label` section
