@@ -30,5 +30,7 @@ html_theme_options = {
     "github_user": "Eudorajab1",
     "fixed_sidebar": True,
     "show_powered_by": False,
+    "show_related" : True,
+    #"github_banner" : True,
     "tidelift_url": "https://tidelift.com/subscription/pkg/pypi-alabaster?utm_source=pypi-alabaster&utm_medium=referral&utm_campaign=docs",  # noqa
 }

@@ -21,4 +21,5 @@ Head over to our :ref:`quick_start_label` section
    overview
    installation
    running
+   develop
    

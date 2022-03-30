@@ -69,7 +69,7 @@ Once pip has finished installing Websaw and all the required dependancies you sh
 In order to check run the following command 
 ::
 
-    websaw -h
+    pythn -m websaw -h
 
 If you get the following output Websaw has been installed and is ready to use. 
 If not please refer to the `Installation`_ section of this manual.
@@ -95,3 +95,5 @@ If not please refer to the `Installation`_ section of this manual.
 
 
 Well done .. you are now ready to use your new Websaw installation to create some awesome apps!!
+
+Head on over to :ref:`run_websaw_label` to fire up your Websaw instance and happy developing!! 
