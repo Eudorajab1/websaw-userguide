@@ -1,0 +1,200 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Running Websaw &#8212; WebSaw  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/websaw-logos_transparent.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">A light, fully fucntional, ultra fast, flexible and feauture rich web framework</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Websaw</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#websaw-cli">Websaw CLI</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="running-websaw">
+<h1>Running Websaw<a class="headerlink" href="#running-websaw" title="Permalink to this headline">¶</a></h1>
+<p>For Development purposes the traditional way to run Websaw is from the command line as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websaw</span> <span class="n">run</span> <span class="n">apps</span>
+</pre></div>
+</div>
+<p>This will attempt to start all applications in the directory apps but you can store your apps in any folder of your
+choice. Just make sure to let websaw know the root folder for your applications.</p>
+<p>Output in the console should look similar to the below depending on the structure of your root apps directory and the number of applicaitons installed (in this case apps)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 __
+___     ______  / /_  _________ __      __
+| | /| / /&gt; _ \/ __ \/ ___/ __ `/ | /| / /&gt;
+| |/ |/ /&gt;  __/ /_/ (__  ) /_/ /| |/ |/ /&gt;
+|__/|__/&gt;\___/_.___/____/\__,_/ |__/|__/&gt;
+
+  it is just the beginning...
+
+  Websaw: 0.0.6 on Python 3.8.10 (default, Mar 15 2022, 12:22:08)
+  [GCC 9.4.0]
+
+
+  [X] loaded new_app
+  [X] loaded pyjsaw
+  [X] loaded auth
+  [X] loaded app_mixin1
+  [X] loaded app_mixin
+  [X] loaded db_admin
+  [X] already loaded mixins
+  [X] loaded todo
+  [X] loaded xauth
+  [X] loaded simple
+  [X] loaded group_session
+  Ombott v0.0.13 server starting up (using RocketServer(reloader=False))...
+  watching (lazy-mode) python file changes in: apps
+  Listening on http://127.0.0.1:8000/
+  Hit Ctrl-C to quit.
+</pre></div>
+</div>
+<p>Starting Websaw form the command line offers you many options to pass in paramters to change the behavbiour of your Websaw instance.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websaw</span> <span class="n">run</span> <span class="n">apps</span> <span class="o">-</span><span class="n">H</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="o">-</span><span class="n">P</span> <span class="mi">8010</span>
+</pre></div>
+</div>
+<p>tells Websaw that we want it to run on IP 0.0.0.0 and Port 8010 and you will see the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ombott</span> <span class="n">v0</span><span class="o">.</span><span class="mf">0.13</span> <span class="n">server</span> <span class="n">starting</span> <span class="n">up</span> <span class="p">(</span><span class="n">using</span> <span class="n">RocketServer</span><span class="p">(</span><span class="n">reloader</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span><span class="o">...</span>
+<span class="n">Listening</span> <span class="n">on</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">8010</span><span class="o">/</span>
+<span class="n">Hit</span> <span class="n">Ctrl</span><span class="o">-</span><span class="n">C</span> <span class="n">to</span> <span class="n">quit</span><span class="o">.</span>
+
+<span class="n">watching</span> <span class="p">(</span><span class="n">lazy</span><span class="o">-</span><span class="n">mode</span><span class="p">)</span> <span class="n">python</span> <span class="n">file</span> <span class="n">changes</span> <span class="ow">in</span><span class="p">:</span> <span class="n">apps</span>
+</pre></div>
+</div>
+<p>as opposed to the default 127.0.0.1 and port 8000</p>
+<p>This is very usefull for development where multiple developers are working on the same application. Each one can run the applicaiton on their own port if necessary and not affect any other instance</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">By default Websaw will automatically detect any changes to any .py file in the apps structure and restart the server in order to reflect the latest changes.
+You can use the –watch setting in the cli to change this behaviour.</p>
+</div>
+<div class="section" id="websaw-cli">
+<h2>Websaw CLI<a class="headerlink" href="#websaw-cli" title="Permalink to this headline">¶</a></h2>
+<p>In order to see the cli options available to you enter the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websaw</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>this will show you the list of all available options that can be used with the Websaw Command Line.</p>
+<p>To get help on any of these options simply type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">websaw</span> <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">help</span>
+<span class="n">eg</span><span class="p">:</span> <span class="n">websaw</span> <span class="n">run</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>This will deisplay the following:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="n">run</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="n">APPS_FOLDER</span>
+
+<span class="n">Run</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">applications</span> <span class="n">on</span> <span class="n">apps_folder</span>
+
+<span class="n">Options</span><span class="p">:</span>
+<span class="o">-</span><span class="n">Y</span><span class="p">,</span> <span class="o">--</span><span class="n">yes</span>                       <span class="n">No</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">assume</span> <span class="n">yes</span> <span class="n">to</span> <span class="n">questions</span>
+                                <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="kc">False</span><span class="p">]</span>
+<span class="o">-</span><span class="n">H</span><span class="p">,</span> <span class="o">--</span><span class="n">host</span> <span class="n">TEXT</span>                 <span class="n">Host</span> <span class="n">name</span>  <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="o">-</span><span class="n">P</span><span class="p">,</span> <span class="o">--</span><span class="n">port</span> <span class="n">INTEGER</span>              <span class="n">Port</span> <span class="n">number</span>  <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="mi">8000</span><span class="p">]</span>
+<span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="o">--</span><span class="n">password_file</span> <span class="n">TEXT</span>        <span class="n">File</span> <span class="k">for</span> <span class="n">the</span> <span class="n">encrypted</span> <span class="n">password</span>  <span class="p">[</span><span class="n">default</span><span class="p">:</span>
+                                <span class="n">password</span><span class="o">.</span><span class="n">txt</span><span class="p">]</span>
+<span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">--</span><span class="n">server</span> <span class="p">[</span><span class="n">default</span><span class="o">|</span><span class="n">wsgiref</span><span class="o">|</span><span class="n">gunicorn</span><span class="o">|</span><span class="n">gevent</span><span class="o">|</span><span class="n">waitress</span><span class="o">|</span><span class="n">geventWebSocketServer</span><span class="o">|</span><span class="n">wsgirefThreadingServer</span><span class="o">|</span><span class="n">rocketServer</span><span class="p">]</span>
+                                <span class="n">server</span> <span class="n">to</span> <span class="n">use</span>  <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="n">default</span><span class="p">]</span>
+<span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="o">--</span><span class="n">number_workers</span> <span class="n">INTEGER</span>    <span class="n">Number</span> <span class="n">of</span> <span class="n">workers</span>  <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">]</span>
+<span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="o">--</span><span class="n">dashboard_mode</span> <span class="n">TEXT</span>       <span class="n">Dashboard</span> <span class="n">mode</span><span class="p">:</span> <span class="n">demo</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">full</span><span class="p">,</span> <span class="n">none</span>
+                                <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="n">full</span><span class="p">]</span>
+<span class="o">--</span><span class="n">watch</span> <span class="p">[</span><span class="n">off</span><span class="o">|</span><span class="n">sync</span><span class="o">|</span><span class="n">lazy</span><span class="p">]</span>         <span class="n">Watch</span> <span class="n">python</span> <span class="n">changes</span> <span class="ow">and</span> <span class="n">reload</span> <span class="n">apps</span>
+                                <span class="n">automatically</span><span class="p">,</span> <span class="n">modes</span><span class="p">:</span> <span class="n">off</span><span class="p">,</span> <span class="n">sync</span><span class="p">,</span> <span class="n">lazy</span>
+                                <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="n">lazy</span><span class="p">]</span>
+<span class="o">--</span><span class="n">ssl_cert</span> <span class="n">PATH</span>                 <span class="n">SSL</span> <span class="n">certificate</span> <span class="n">file</span> <span class="k">for</span> <span class="n">HTTPS</span>
+<span class="o">--</span><span class="n">ssl_key</span> <span class="n">PATH</span>                  <span class="n">SSL</span> <span class="n">key</span> <span class="n">file</span> <span class="k">for</span> <span class="n">HTTPS</span>
+<span class="o">-</span><span class="n">help</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>               <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The majority of thse options should be self explanetory but there are a few <em>special</em> options that we will cover in greater deatail later on.</p>
+<p>Right now you should be able to start and stop Websaw from the command line and be in a position to get developing.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2022 WebSaw.
+      
+      |
+      <a href="_sources/running.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
