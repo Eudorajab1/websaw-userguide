@@ -1,3 +1,4 @@
+.. _installation_label:
 Installation
 ============
 
@@ -57,7 +58,31 @@ To use Websaw, make sure that your venv is activated and then simply install
 ::
     pip install websaw
 
-Well done .. you are now ready to use your new Websaw installation to create some awesome apps!!
+Once pip has finished installing Websaw and all the required dependancies you should be good to go.
 
- .. toctree::
-   :hidden:
+In order to check run the following command ::
+    python websaw -h
+
+If you get the following output Websaw has been installed and is ready to use. 
+If not please refer to the `Installation`_ section of this manual.
+::
+    Usage: python -m websaw [OPTIONS] COMMAND [ARGS]...
+
+    WEBSAW - a web framework for rapid development with pleasure
+
+    Type "websaw COMMAND -h" for available options on commands
+
+    Options:
+        -help, -h, --help  Show this message and exit.
+
+    Commands:
+        call          Call a function inside apps_folder
+        new_app       Create a new app copying the scaffolding one
+        run           Run all the applications on apps_folder
+        set_password  Set administrator's password for the Dashboard
+        setup         Setup new apps folder or reinstall it
+        shell         Open a python shell with apps_folder's parent added to...
+        version       Show versions and exit
+
+
+Well done .. you are now ready to use your new Websaw installation to create some awesome apps!!
