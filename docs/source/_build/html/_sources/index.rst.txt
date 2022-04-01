@@ -1,3 +1,4 @@
+==================
 Welcome to WebSaw!
 ==================
 
@@ -13,13 +14,14 @@ get up and running in minutes.
 
 *Cant Wait to get started ?*
 
-Head over to our :ref:`quick_start_label` section
+Head over to our :ref:`installation_label` section
 
 .. toctree::
    :hidden:
    
    overview
    installation
+   getting_started
    running
    develop
    

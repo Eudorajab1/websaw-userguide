@@ -1,0 +1,276 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Getting Started &#8212; WebSaw  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Running Websaw" href="running.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/websaw-logos_transparent.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">A light, fully fucntional, ultra fast, flexible and feauture rich web framework</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#our-first-application">Our First Application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running Websaw</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developing Your Apps</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="running.html" title="next chapter">Running Websaw</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Assuming you have successfully installed <em>Websaw</em> by following the <a class="reference internal" href="installation.html#installation-label"><span class="std std-ref">Installation</span></a> procudure you should now have the following depending on what installation method you chose.</p>
+<p>If you installed using pip:</p>
+<ul class="simple">
+<li>latest stable version of websaw and dependancies installed in your venv</li>
+</ul>
+<p>If you installed via git:</p>
+<ul class="simple">
+<li>latest websaw sourcecode installed in your websaw folder.</li>
+<li>apps directory containing sample apps shipped with <em>Websaw</em></li>
+</ul>
+<p>If you have installed from source you need to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">websaw</span>
+</pre></div>
+</div>
+<p>Irrespective of installation method lets verify that <em>Websaw</em> has installed correctly as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pythn</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>If you get the following output Websaw has been installed and is ready to use.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="n">COMMAND</span> <span class="p">[</span><span class="n">ARGS</span><span class="p">]</span><span class="o">...</span>
+
+<span class="n">WEBSAW</span> <span class="o">-</span> <span class="n">a</span> <span class="n">web</span> <span class="n">framework</span> <span class="k">for</span> <span class="n">rapid</span> <span class="n">development</span> <span class="k">with</span> <span class="n">pleasure</span>
+
+<span class="n">Type</span> <span class="s2">&quot;websaw COMMAND -h&quot;</span> <span class="k">for</span> <span class="n">available</span> <span class="n">options</span> <span class="n">on</span> <span class="n">commands</span>
+
+<span class="n">Options</span><span class="p">:</span>
+    <span class="o">-</span><span class="n">help</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
+
+<span class="n">Commands</span><span class="p">:</span>
+    <span class="n">call</span>          <span class="n">Call</span> <span class="n">a</span> <span class="n">function</span> <span class="n">inside</span> <span class="n">apps_folder</span>
+    <span class="n">new_app</span>       <span class="n">Create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">app</span> <span class="n">copying</span> <span class="n">the</span> <span class="n">scaffolding</span> <span class="n">one</span>
+    <span class="n">run</span>           <span class="n">Run</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">applications</span> <span class="n">on</span> <span class="n">apps_folder</span>
+    <span class="n">set_password</span>  <span class="n">Set</span> <span class="n">administrator</span><span class="s1">&#39;s password for the Dashboard</span>
+    <span class="n">setup</span>         <span class="n">Setup</span> <span class="n">new</span> <span class="n">apps</span> <span class="n">folder</span> <span class="ow">or</span> <span class="n">reinstall</span> <span class="n">it</span>
+    <span class="n">shell</span>         <span class="n">Open</span> <span class="n">a</span> <span class="n">python</span> <span class="n">shell</span> <span class="k">with</span> <span class="n">apps_folder</span><span class="s1">&#39;s parent added to...</span>
+    <span class="n">version</span>       <span class="n">Show</span> <span class="n">versions</span> <span class="ow">and</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<p>If not please refer to the <a class="reference internal" href="installation.html#installation-label"><span class="std std-ref">Installation</span></a> section of this manual.</p>
+<p>This also leads us into the next section where we will look at developing the ubiquitous Hello World app which will provice you with some building blocks for deleoping your aswesam <em>Websaw</em> apps.</p>
+<p>Before we do .. lets initialise out apps forlder and create a new app.</p>
+<p>For git installations the first step is not necessary as the apps folder and a few example apps are already installed so you can skip this first step.</p>
+<p>So the first thing we need to do is use the CLI to help us.</p>
+<p>The ClI has many commands and options which will be covered in its own section later on so for now lets run the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="n">setup</span> <span class="n">apps</span>
+</pre></div>
+</div>
+<p>This will create the &lt;apps&gt; folder for us in our root folder. In this case we have chosen to name it apps but it could just as well be any valid folder.</p>
+<p>Now lets create our hello world app as a new app by running the following:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="n">new_app</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">scaffolding</span><span class="o">/</span><span class="n">app</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The scaffolding app zipfile shoudl be in your root directory by default</p>
+<p>For git installations the easiest thing to do is just copy the apps/simple folder or rename it to heelo_world</p>
+<p>In all cases it is just as easy to create both the apps folder and the hello_world app folder manually</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">apps</span> <span class="c1">## if does not exist</span>
+<span class="n">cd</span> <span class="n">apps</span>
+<span class="n">touch</span> <span class="o">.</span> <span class="n">__init__py</span>
+<span class="n">mkdir</span> <span class="n">hello_world</span>
+<span class="n">cd</span> <span class="n">hello_world</span>
+<span class="n">touch</span> <span class="o">.</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>or by using your favourite dev ide such as vscode.</p>
+<p>As I genrally use vscode simply type code . in the root directory brings up a new instande of vscode</p>
+<div class="section" id="our-first-application">
+<h2>Our First Application<a class="headerlink" href="#our-first-application" title="Permalink to this headline">¶</a></h2>
+<p>As per tradition we are going to create a simple Hello World app to understnad the basics of the <em>Websaw</em> framewok after which
+we will get into a lot more depth and detail regarding the tools and techniques being used.</p>
+<p>For those of you who want to dive right into a slightly more complex application there is a dedicated
+<a class="reference external" href="https://eudorajab1.github.io/">Websaw Examples and Tutorials</a> that will walk you through some of the more complex examples.</p>
+<p>Either way it you are new to <em>Websaw</em> we reccomend following along here as these excercises are designed to give you the building blocks
+for later usage.</p>
+<p>All that being said .. lets dive in and see what we can do.</p>
+<p>Currently in our apps/hello_world folder we should have a single file __init__.py. If you have copied an existing folder or
+renameed an exisrting example we reccomend deleting everything other than the __init__.py in order to follow this example.</p>
+<p>Now that we have our directory structure sorted out lets get coding!!.</p>
+<p>Before we dive in however there a number of differnt conventions that can be used for python projects. Looking at differnt covnetions is
+beyond the scope of this document and we suggest that your apps take on a structured approach with modules and sub folders.</p>
+<p>To this end lets start off by creating a controllers.py to hold all of our <strong>actions</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="o">.</span> <span class="n">controllers</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Then lets open <strong>controllers.py</strong> in the editor of choice and add the following code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### controllers.py ###</span>
+
+<span class="kn">from</span> <span class="nn">websaw</span> <span class="k">import</span> <span class="n">DefaultApp</span><span class="p">,</span> <span class="n">DefaultContext</span>
+<span class="kn">import</span> <span class="nn">ombott</span>
+
+<span class="n">ombott</span><span class="o">.</span><span class="n">default_app</span><span class="p">()</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="k">class</span> <span class="nc">Context</span><span class="p">(</span><span class="n">DefaultContec</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="n">ctxd</span> <span class="o">=</span> <span class="n">Context</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">DefaultApp</span><span class="p">(</span><span class="n">ctxd</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">__package__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello Websaw World&#39;</span>
+</pre></div>
+</div>
+<p><em>So what is going on here?</em></p>
+<p>First we import our <strong>App</strong> and <strong>Context</strong> base clases from <em>Websaw</em> along with the <strong>ombott</strong> (One More Bottle) package.
+More inofrmation on bottle can be found at <a class="reference external" href="https://bottlepy.org/docs/dev/">The Official Bottle Site</a></p>
+<p>Next we create our <strong>Context</strong> class using the imported <strong>DefaultContext</strong> as our base class and pass it to our app intitiliser</p>
+<p>As we dont need anything else for now the default context is fine. In later chapters you will see how we can customise and leverage
+the <strong>Context</strong> in order to make our applications extremely flexible yet super secure.</p>
+<p>Next we set up our app using the <strong>DefaultApp</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>All the above could be done in any other module and imported but for the sake of readablilty lets keep it all here for now.</p>
+<p class="last"><strong>example:</strong> If you have an app with multiple modules we suggest you create a common.py module where all initialisation is done
+then you can simply imprt what you need into each module but more on that later.</p>
+</div>
+<p>Then we get to our actual <strong>action</strong>.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">For the sake of clarity an <strong>action</strong> in <em>Websaw</em> is deemed to be a <strong>routeable function</strong></p>
+</div>
+<p>The first thing we need to do is declare our <strong>route</strong>. This lets our app know where to find the function <strong>hello_world</strong>.</p>
+<p>There will be a lot more on <strong>Routes</strong> later on but for now lets just register a route called ‘index’</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We do not need seperate routing tables setup. This is all done by <em>Websaw</em> under the hood.</p>
+</div>
+<p>Followd by our function decleration. Once again it is important to note that the route and function names need not be the same.
+In this case as we only have one function in our module it is easier to register our route as <strong>index</strong> as you will see later.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">All <strong>actions</strong> in <em>Websaw</em> take context as a mandatory first argument</p>
+</div>
+<p>and all that ourt <strong>action</strong> now needs to do it return our ‘Hello Webasw World’ string.</p>
+<p>Before we can actually run the application there are a few more things we need to do</p>
+<p>You can close and save controllers.py and open __init__.py</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Once aganin we could probably have all this code in a single module but as your app grows it becaomes paramount to have things structured.</p>
+</div>
+<p>Add the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## __init__.py ##</span>
+
+<span class="kn">from</span> <span class="nn">.controllers</span> <span class="k">import</span> <span class="n">app</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The above should be pretty self expanatory in that we import our <strong>app</strong> instance from our controllers.py and then
+then mount our app using <strong>app.mount()</strong></p>
+<p>You can now save and close the __init__.py</p>
+<p>Thats it .. lets check it out.</p>
+<p>In your terminal run the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="n">run</span> <span class="n">apps</span>
+</pre></div>
+</div>
+<p>head over to your browser and</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">hello_world</span>
+</pre></div>
+</div>
+<p>All things being well you should see the reults of your very first <em>Websaw</em> app</p>
+<p>Not very exciting and not very pretty but the foundation for things to come.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We declared our route as ‘index’ in our app but not on our URL. <em>Websaw</em> automatially defaults to /index
+if forget to add it and in effect <a class="reference external" href="http://localhost:8000/hello_world">http://localhost:8000/hello_world</a> and <a class="reference external" href="http://localhost:8000/hello_world/index">http://localhost:8000/hello_world/index</a>
+are equivalent</p>
+</div>
+<p>Well done .. you are now ready to see what <em>Websaw</em> can really do!!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2022 WebSaw.
+      
+      |
+      <a href="_sources/getting_started.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

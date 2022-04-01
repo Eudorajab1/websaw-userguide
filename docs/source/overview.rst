@@ -2,7 +2,7 @@
 Overview
 ========
 
-**Websaw** (Web */Software Application Warehouse/*) is a lightweight, superfast web application framework
+**Websaw** (Web */Software Application Warehouse/*) is a lightweight, ultrafast web application framework
 that offers feature rich **'out of the box functionality'** coupled with an unparalleled level of 
 `flexibility` to develop *secure, robust applications* **rapidly**.
 
@@ -12,7 +12,7 @@ that offers feature rich **'out of the box functionality'** coupled with an unpa
 * small footprint
 * very few dependancies
 
-**Superfast**
+**Ultrafast**
 
 * modules and acrions load only the fixtures they use
 * no overhead on screen refresh or redirects
@@ -22,6 +22,7 @@ that offers feature rich **'out of the box functionality'** coupled with an unpa
 
 * standard authorization functionality
 * customizable default layout and page rendering 
+* customizable form templating engine
 * fully functional built in grid
 * customizable layout and .css libraries
 
@@ -39,4 +40,4 @@ All in all *Websaw* is truly a remarkable framework on which you can build amazi
 
 *Cant Wait to get started ?*
 
-Head on over to the :ref:`quick_start_label` section
+Head on over to :ref:`installation_label` section to get up and running in minutes

@@ -16,7 +16,7 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Running Websaw" href="running.html" />
+    <link rel="next" title="Getting Started" href="getting_started.html" />
     <link rel="prev" title="Overview" href="overview.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -48,9 +48,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-with-pip-preferred">Installation with pip (preferred)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from source</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running Websaw</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop.html">Developing Your Apps</a></li>
 </ul>
@@ -60,7 +62,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="overview.html" title="previous chapter">Overview</a></li>
-      <li>Next: <a href="running.html" title="next chapter">Running Websaw</a></li>
+      <li>Next: <a href="getting_started.html" title="next chapter">Getting Started</a></li>
   </ul></li>
 </ul>
 </div>
@@ -83,12 +85,19 @@
           <div class="body" role="main">
             
   <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>Installing <em>Websaw</em> is pretty much a straightforward process as follows:-</p>
+<span id="installation-label"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p><em>Websaw</em> can be installed in a number of ways as follows:-</p>
+<ul class="simple">
+<li>Installing from pip using venv (reccommended for development)</li>
+<li>Installing from git repo locally (reccomended for contributors)</li>
+<li>Installing for production</li>
+</ul>
+<p>We will cover the first two options below and look at the different production installations in a later section.</p>
+<p>In both cases above you will need to do the following:</p>
 <ul class="simple">
 <li>Create a new virtual environment (reccomended for development)</li>
 <li>Activate the venv</li>
-<li>Install websaw using pip</li>
+<li>Install websaw using either pip (reccomended) or downloading directly from the git repo.</li>
 </ul>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
@@ -96,10 +105,6 @@
 example: Windows, you must use backslashes (i.e. <code class="docutils literal notranslate"><span class="pre">\</span></code>) instead of slashes.
 Please also ensure that you have python &gt;= 3.7 installed along wiht pip and that both are in your os path.</p>
 </div>
-<p>Installation in a production envirnoment is covered later.</p>
-<p>So lets get going. The sooner we install Websaw the sooner we can start developing <em>Awesome</em> apps!!</p>
-<div class="section" id="quick-start">
-<span id="quick-start-label"></span><h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
 <p>In order to get started make sure that your os meets the following minimal requirements.</p>
 <ul class="simple">
 <li>Pyhton &gt;= 3.7</li>
@@ -108,8 +113,9 @@ Please also ensure that you have python &gt;= 3.7 installed along wiht pip and t
 <p>For the sake of keeping the instructions generic let us assume that we are woking on a WSL Ubuntu
 type development environment.</p>
 <p>On Linux OS make sure you have sudo access</p>
-<p>For Development purposes we strongly reccomend that you first create a virtual environment in order to
-isolate packages and depndancies form your main environment.</p>
+<p>So lets get going. The sooner we install Websaw the sooner we can start developing <em>Awesome</em> apps!!</p>
+<div class="section" id="installation-with-pip-preferred">
+<h2>Installation with pip (preferred)<a class="headerlink" href="#installation-with-pip-preferred" title="Permalink to this headline">¶</a></h2>
 <p>To do this you need to open a new bash / shell / cmd window and enter the following:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">&lt;</span><span class="n">direcory_name</span><span class="o">&gt;</span>
 <span class="n">cd</span> <span class="o">&lt;</span><span class="n">directory_name</span><span class="o">&gt;</span>
@@ -122,43 +128,33 @@ isolate packages and depndancies form your main environment.</p>
 </pre></div>
 </div>
 <p>This is python’s way of telling us that we are now in the virtual environment and we can start installing Websaw.</p>
-<p>To deactive the virtual environment simply use the followint command:</p>
+<p>To deactive the virtual environment at any time simply use the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deactivate</span>
 </pre></div>
 </div>
-<p>This will take you back to your normal python bash prompt</p>
-<p>To use Websaw, make sure that your venv is activated and then simply install</p>
+<p>This will take you back to your normal python bash prompt. For now lets keep the venv activated.</p>
+<p>To install <em>Websaw</em> using pip simply run the following</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">websaw</span>
 </pre></div>
 </div>
-<p>Once pip has finished installing Websaw and all the required dependancies you should be good to go.</p>
-<p>In order to check run the following command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pythn</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="o">-</span><span class="n">h</span>
+<p>Once pip has finished installing websaw and all depencies you will have the latest stable version of <em>Websaw</em> and all dependancies installed in your venv and are ready to go.</p>
+</div>
+<div class="section" id="installing-from-source">
+<h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h2>
+<p>In order to install source from the git repo you will need to have git installed and configured on your machine along with a vailid github account setup.</p>
+<p>Same steps as above for creating and activating your venv.</p>
+<p>Form inside your activated venv run the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">repo</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>If you get the following output Websaw has been installed and is ready to use.
-If not please refer to the <a class="reference internal" href="#installation">Installation</a> section of this manual.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">websaw</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="n">COMMAND</span> <span class="p">[</span><span class="n">ARGS</span><span class="p">]</span><span class="o">...</span>
-
-<span class="n">WEBSAW</span> <span class="o">-</span> <span class="n">a</span> <span class="n">web</span> <span class="n">framework</span> <span class="k">for</span> <span class="n">rapid</span> <span class="n">development</span> <span class="k">with</span> <span class="n">pleasure</span>
-
-<span class="n">Type</span> <span class="s2">&quot;websaw COMMAND -h&quot;</span> <span class="k">for</span> <span class="n">available</span> <span class="n">options</span> <span class="n">on</span> <span class="n">commands</span>
-
-<span class="n">Options</span><span class="p">:</span>
-    <span class="o">-</span><span class="n">help</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
-
-<span class="n">Commands</span><span class="p">:</span>
-    <span class="n">call</span>          <span class="n">Call</span> <span class="n">a</span> <span class="n">function</span> <span class="n">inside</span> <span class="n">apps_folder</span>
-    <span class="n">new_app</span>       <span class="n">Create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">app</span> <span class="n">copying</span> <span class="n">the</span> <span class="n">scaffolding</span> <span class="n">one</span>
-    <span class="n">run</span>           <span class="n">Run</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">applications</span> <span class="n">on</span> <span class="n">apps_folder</span>
-    <span class="n">set_password</span>  <span class="n">Set</span> <span class="n">administrator</span><span class="s1">&#39;s password for the Dashboard</span>
-    <span class="n">setup</span>         <span class="n">Setup</span> <span class="n">new</span> <span class="n">apps</span> <span class="n">folder</span> <span class="ow">or</span> <span class="n">reinstall</span> <span class="n">it</span>
-    <span class="n">shell</span>         <span class="n">Open</span> <span class="n">a</span> <span class="n">python</span> <span class="n">shell</span> <span class="k">with</span> <span class="n">apps_folder</span><span class="s1">&#39;s parent added to...</span>
-    <span class="n">version</span>       <span class="n">Show</span> <span class="n">versions</span> <span class="ow">and</span> <span class="n">exit</span>
+<p>By default git will create a websaw folder in your dev enviroment.</p>
+<p>So lets head into the websaw directory and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">websaw</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>Well done .. you are now ready to use your new Websaw installation to create some awesome apps!!</p>
-<p>Head on over to <a class="reference internal" href="running.html#run-websaw-label"><span class="std std-ref">Running Websaw</span></a> to fire up your Websaw instance and happy developing!!</p>
+<p>This will give us the latest version of <em>Websaw</em> should we need to create any PR’s to the Websaw git repo.</p>
+<p><em>We are now good to go</em> so lets get started buy heading over to the <a class="reference internal" href="getting_started.html#getting-started"><span class="std std-ref">Getting Started</span></a> section</p>
 </div>
 </div>
 

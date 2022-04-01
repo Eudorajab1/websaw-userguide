@@ -1,28 +1,29 @@
+
+.. _installation_label:
+
 ============
 Installation
 ============
 
-Installing *Websaw* is pretty much a straightforward process as follows:-
+*Websaw* can be installed in a number of ways as follows:-
+
+* Installing from pip using venv (reccommended for development) 
+* Installing from git repo locally (reccomended for contributors)
+* Installing for production
+  
+We will cover the first two options below and look at the different production installations in a later section.
+
+In both cases above you will need to do the following:
 
 * Create a new virtual environment (reccomended for development)
 * Activate the venv
-* Install websaw using pip
+* Install websaw using either pip (reccomended) or downloading directly from the git repo.
 
 .. important:: 
     Depending on your operating system the installation commands vary slightly.
     example: Windows, you must use backslashes (i.e. ``\``) instead of slashes.
     Please also ensure that you have python >= 3.7 installed along wiht pip and that both are in your os path.
 
-
-Installation in a production envirnoment is covered later.
-
-So lets get going. The sooner we install Websaw the sooner we can start developing *Awesome* apps!!
-
-.. _quick_start_label:
-
-Quick Start
------------
-   
 In order to get started make sure that your os meets the following minimal requirements.
 
 * Pyhton >= 3.7
@@ -33,8 +34,10 @@ type development environment.
 
 On Linux OS make sure you have sudo access
 
-For Development purposes we strongly reccomend that you first create a virtual environment in order to
-isolate packages and depndancies form your main environment.
+So lets get going. The sooner we install Websaw the sooner we can start developing *Awesome* apps!!
+
+Installation with pip (preferred)
+---------------------------------
 
 To do this you need to open a new bash / shell / cmd window and enter the following:-
 ::
@@ -52,48 +55,42 @@ If all is good your prompt will change to the name of the vitual environment you
 
 This is python’s way of telling us that we are now in the virtual environment and we can start installing Websaw.
 
-To deactive the virtual environment simply use the followint command: 
+To deactive the virtual environment at any time simply use the following command: 
 ::
 
     deactivate
 
-This will take you back to your normal python bash prompt
+This will take you back to your normal python bash prompt. For now lets keep the venv activated.
 
-To use Websaw, make sure that your venv is activated and then simply install 
+To install *Websaw* using pip simply run the following 
 ::
 
     pip install websaw
 
-Once pip has finished installing Websaw and all the required dependancies you should be good to go.
+Once pip has finished installing websaw and all depencies you will have the latest stable version of *Websaw* and all dependancies installed in your venv and are ready to go.
 
-In order to check run the following command 
+Installing from source
+----------------------
+
+In order to install source from the git repo you will need to have git installed and configured on your machine along with a vailid github account setup.
+
+
+Same steps as above for creating and activating your venv.
+
+Form inside your activated venv run the following
 ::
 
-    pythn -m websaw -h
+    git clone <path to repo>
+  
+By default git will create a websaw folder in your dev enviroment.
 
-If you get the following output Websaw has been installed and is ready to use. 
-If not please refer to the `Installation`_ section of this manual.
+So lets head into the websaw directory and run 
 ::
 
-    Usage: python -m websaw [OPTIONS] COMMAND [ARGS]...
+    cd websaw
+    pip install -e .
 
-    WEBSAW - a web framework for rapid development with pleasure
+This will give us the latest version of *Websaw* should we need to create any PR's to the Websaw git repo.
 
-    Type "websaw COMMAND -h" for available options on commands
-
-    Options:
-        -help, -h, --help  Show this message and exit.
-
-    Commands:
-        call          Call a function inside apps_folder
-        new_app       Create a new app copying the scaffolding one
-        run           Run all the applications on apps_folder
-        set_password  Set administrator's password for the Dashboard
-        setup         Setup new apps folder or reinstall it
-        shell         Open a python shell with apps_folder's parent added to...
-        version       Show versions and exit
-
-
-Well done .. you are now ready to use your new Websaw installation to create some awesome apps!!
-
-Head on over to :ref:`run_websaw_label` to fire up your Websaw instance and happy developing!! 
+*We are now good to go* so lets get started buy heading over to the :ref:`getting_started` section
+    
