@@ -22,6 +22,4 @@ Head over to our :ref:`installation_label` section
    overview
    installation
    getting_started
-   running
-   develop
-   
+   fixtures
