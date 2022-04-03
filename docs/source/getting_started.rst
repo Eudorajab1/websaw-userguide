@@ -350,13 +350,12 @@ followng:
     This should be declared after the route directive and before the function decleration
 
 
-*Websaw* knows that this is a template and updates the context template **Fixture** accordingly. 
+*Websaw* has a builtin **template fixture** that deals with initialising and rendering our index.html. 
 
-We will be covering 
-**Fixture** next in brief and in detail in the **Fixtures** section of this manual. For now lets just say that there is 
-some 'under the hood' sugar that *Websaw* has to render the index template with the result of the hello_world function.
+We will be creating our own simple **fixture** next and cover **fixtures** in depth in the :ref:`fixtures` section.
 
-In order for the template to render correctly we need to return a dictionary so we should update our function as fillows:
+In order for our template to render correctly we need to return a dictionary so we should update our function as
+follows:
 ::
 
     return dict(msg = 'Hello Websaw World')
@@ -366,7 +365,7 @@ Our complete action should now look like this:
 
     @app.route('index')
     @app.use('indes.html')
-    def hello_world(ctxd: Context)
+    def hello_world(ctx: Context)
         return dict(msg='Hello Websaw World')
 
 Go ahead and run it 
@@ -379,17 +378,14 @@ or just refresh your browser.
 Starting to look a little bit better now. So much so in fact that we should consider notifying visitors on the 
 number of times they have actually visited our application.
 
-To do this lets create a **Fixture**
+To do this lets create a very simple **Fixture**
 
-Our First Fxture
-----------------
+.. _adding_a_fixture:
 
-Before we jump in and create our **Fixture** lets have a look at what a *Websaw* fixtures is.
+Adding a Fxture
+---------------
 
-There are many and varied roles for **fixtures** in *Websaw* that we will be covering in a dedicated section later
-so for now lets just try to think of them generally as similar to of JS components.
-
-*Websaw* has a number of "out of the box" fixtures which we can subclass or extend  in order to generate 
+*Websaw* has a number of "out of the box" fixtures which we can subclass or extend in order to generate 
 specific functionaltiy that we may need within the context of our application. 
 
 These are all detailed extensively in the :ref:`fixtures` section of this manual.
@@ -400,7 +396,7 @@ For now the important things to note about **Fixtures** is as foolows:
   * they are context specific and can comprise of other fixtures.
   * they are completely thread safe and secure.
 
-So lets get to it. Our objective is to create a fixture that will simply count the number of times a particular
+So lets get to it. Our objective is to create a simple *fixture* that will simply count the number of times a particular
 browser has visited our site.
 
 We can extend this later to store the results in a database of our chosing but for now we will use the session
@@ -411,7 +407,6 @@ So lets get going.
 The first thing we need to do is to import the Fixture base class from websaw.core
 
 ::
-
     ...
     from websaw.core import Fixture
 
@@ -441,9 +436,9 @@ it to our context.
 In our action we now can use our new fixture simply by adding the folloing code
 ::
 
-    visited = ctxd.visited.get_visits()
+    visited = ctx.visited.get_visits()
 
-where ctxd is our **context**, **visited** is our **custom fixture** and **get_visits()** is our method.
+where ctx is our **context**, **visited** is our **custom fixture** and **get_visits()** is our method.
 
 and we simply add visted to the dictionary we are returning to the template
 ::
@@ -479,30 +474,17 @@ of creating an authorization fixture then things become a lot more meaningfull.
 
 Pretty neat stuff !!
 
-So far we have briefly mentioned the most critical building blocks mainly
+So far we have seen how the three main layers of *Websaw* in action.
+    
+    * **Fixture**
     * **Context**
-    * **Fixtures**
-    * **Templates**
+    * **Application**
 
-You will note that so far we have not mentioned things like **request**, **response** and **sessions** that make up any 
+You will also note that so far we have not mentioned things like **request**, **response** and **sessions** that make up any 
 HTTP framework.
 
 This does not mean that they are not there .. far from it. 
 
-Where *Websaw* differs from similar frameworks is that is that we do **NOT** use globals for the above. Instead they are 
-all objects within the application context and can be accessesd via the context
-::
-    
-    session = ctx.session
-    request = ctx.request
-    ...
-
-which enables us to have a much **leaner**, **cleaner** and **meaner** framework overall.
-
-What this means for you as developer is that you have unrivalled flexibilty in your applicaitons with the sure knowledge that
-your application is thread safe and secure.
-
-
-
-
+We will cover these in the **Context** section of the user guide but for now lets take a deeper look into **fixture** layer
+by heading over to the :ref:`fixtures` seciton.
 
