@@ -4,7 +4,8 @@
 Getting Started
 ===============
    
-Assuming you have successfully installed *Websaw* by following the :ref:`installation_label` procudure you should now have the following depending on what installation method you chose.
+Assuming you have successfully installed *Websaw* by following the :ref:`installation_label` procedure you 
+should now have the following depending on the installation method you chose.
 
 If you installed using pip:
 
@@ -90,8 +91,8 @@ As I genrally use vscode simply type code . in the root directory brings up a ne
 Our First Application
 ---------------------
 
-As per tradition we are going to create a simple Hello World app to understnad the basics of the *Websaw* framewok after which 
-we will get into a lot more depth and detail regarding the tools and techniques being used.
+As per tradition we are going to create a simple Hello World app to understnad the basics of the *Websaw* framewok 
+after which we will get into a lot more depth and detail regarding the tools and techniques being used.
 
 For those of you who want to dive right into a slightly more complex application there is a dedicated 
 `Websaw Examples and Tutorials <https://eudorajab1.github.io/>`_ that will walk you through some of the more complex examples.
@@ -167,8 +168,11 @@ There will be a lot more on **Routes** later on but for now lets just register a
     We do not need seperate routing tables setup. This is all done by *Websaw* under the hood.
 
 
-Followd by our function decleration. Once again it is important to note that the route and function names need not be the same.
-In this case as we only have one function in our module it is easier to register our route as **index** as you will see later.
+Followd by our function decleration. Once again it is important to note that the route and function 
+names need not be the same.
+
+In this case as we only have one function in our module it is easier to register our route as **index** as 
+you will see later.
 
 .. important:: 
     
@@ -182,7 +186,8 @@ You can close and save controllers.py and open __init__.py
 
 .. note:: 
 
-    Once aganin we could probably have all this code in a single module but as your app grows it becaomes paramount to have things structured.
+    Once aganin we could probably have all this code in a single module but as your app grows it 
+    becomes paramount to have things structured.
 
 Add the following:
 ::
@@ -221,4 +226,283 @@ Not very exciting and not very pretty but the foundation for things to come.
     are equivalent
 
 Well done .. you are now ready to see what *Websaw* can really do!!
+
+Using Templates
+---------------
+
+Templates are a tried and tested way to give your application a uniform *look and feel* whilst at the same
+time allowing you to use one or more .css libraries for styling including your own custom styling.
+
+If you are not familiar with html and css there are many excellent sites that can get you up to speed quickly and it 
+is beyond the scope of this document to cover this.
+
+That having been said lets jump into adding a bit of 'zing' to our otherwise drab and sad looking app.
+
+The first thing we need to do is create a directory where we will be storing our templates. By convention we call this 
+directory **templates** and create and empt __init__.py.
+
+From within your hello_world directory run the following:
+::
+
+    mkdir templates
+    touch templates/__init__.py
+    cd templates
+
+Now with your editor of choice create a new file called **app_layout.html** which we will use as our application
+wide template.
+
+Once open lets add the following:
+::
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <base href="[[=URL('static')]]/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAAQEAAAEAIAAwAAAAFgAAACgAAAABAAAAAgAAAAEAIAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAA=="/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    [[block page_head]]<!-- individual pages can customize header here -->[[end]]
+    </head>
+    <body>
+    <header>
+        <!-- Navigation bar -->
+        <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+        <!-- Logo -->
+        <a class="navbar-item " href="[[=URL('index')]]">
+            <div class="icon-text">
+              <span class="icon has-text-success">
+                <i class="fas fa-home fa-lg"></i>
+              </span>
+              <span class="has-text-primary is-size-5 has-text-weight-semibold">Home</span>
+            </div>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="my-navbar">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        
+        <!-- Left menu ul/li -->
+        [[block page_menu_items]]<!-- individual pages can add menu items here -->[[end]]
+
+        [[block page_left_menu]][[end]]
+        <!-- Right menu ul/li -->
+        </nav>
+    </header>
+    <!-- beginning of HTML inserted by extending template -->
+    [[include]]
+    <!-- end of HTML inserted by extending template -->
+    <footer class="footer is-small">
+      <div class="content has-text-centered">
+        <p>Powered by <strong>&nbsp;WEBSAW</strong> <a href="https://websaw.com"></a>
+        </p>
+      </div>
+    </footer>
+    </body>
+    [[block page_scripts]]<!-- individual pages can add scripts here -->[[end]]
+    </html>
+
+Feel free to the styling library of your choide. Here we are using **Bulma** but we could equally well have used
+**Bootstrp** or eve **no.css**. The choice is really yours.
+
+You will also note we are using the cdn's which is again by choice. If you wanted to use local files you need to create a 
+**static** folder in the hello_world app and create a **css** and **js** subfolder.
+
+The most important thing to notice here is the **[[include]]** directive. We will extend all our templates (.html files) 
+with this app_layout.html to give them a consitant and similar look and feel.
+
+It also saves us the hassle of having to import libraries for every template we generate.
+
+So .. now that we have our app layout sorted out .. lets take a look at what we can to do with our application.
+
+We start by creating a new file called **index.html** which will extend the app_layout.html as follows:
+::
+
+    [[extend "app_layout.html"]]
+    <div class = "container">
+      <div class = "columns">
+        <div class = "column has-text-centered">
+          <div class = "notification is-primary">
+            [[=msg]]    
+          </div>
+        </div>
+      </div>
+    </div>                
+
+
+and that should be it.
+
+.. note:: 
+
+    [[=msg]] is the information that we will display on this page as proviced by our heelo_world function.
+    
+So lets head over to our controllers.py and see what we need to do.
+
+The first thing we need to do is to tell our function to use the index.html template. We do this by adding the 
+followng:
+::
+
+    app.use('index.html')
+
+.. note:: 
+
+    This should be declared after the route directive and before the function decleration
+
+
+*Websaw* knows that this is a template and updates the context template **Fixture** accordingly. 
+
+We will be covering 
+**Fixture** next in brief and in detail in the **Fixtures** section of this manual. For now lets just say that there is 
+some 'under the hood' sugar that *Websaw* has to render the index template with the result of the hello_world function.
+
+In order for the template to render correctly we need to return a dictionary so we should update our function as fillows:
+::
+
+    return dict(msg = 'Hello Websaw World')
+
+Our complete action should now look like this:
+::
+
+    @app.route('index')
+    @app.use('indes.html')
+    def hello_world(ctxd: Context)
+        return dict(msg='Hello Websaw World')
+
+Go ahead and run it 
+::
+
+    http://localhost:8000/hello_world
+
+or just refresh your browser.
+
+Starting to look a little bit better now. So much so in fact that we should consider notifying visitors on the 
+number of times they have actually visited our application.
+
+To do this lets create a **Fixture**
+
+Our First Fxture
+----------------
+
+Before we jump in and create our **Fixture** lets have a look at what a *Websaw* fixtures is.
+
+There are many and varied roles for **fixtures** in *Websaw* that we will be covering in a dedicated section later
+so for now lets just try to think of them generally as similar to of JS components.
+
+*Websaw* has a number of "out of the box" fixtures which we can subclass or extend  in order to generate 
+specific functionaltiy that we may need within the context of our application. 
+
+These are all detailed extensively in the :ref:`fixtures` section of this manual.
+
+For now the important things to note about **Fixtures** is as foolows:
+
+  * they are only initialised when required (on the fly).
+  * they are context specific and can comprise of other fixtures.
+  * they are completely thread safe and secure.
+
+So lets get to it. Our objective is to create a fixture that will simply count the number of times a particular
+browser has visited our site.
+
+We can extend this later to store the results in a database of our chosing but for now we will use the session
+to keep a count.
+
+So lets get going.
+
+The first thing we need to do is to import the Fixture base class from websaw.core
+
+::
+
+    ...
+    from websaw.core import Fixture
+
+Then we can define our new fixture called **Visited** as such:
+::
+
+    class Visited(Fixture):
+        def take_on(self, ctxd: 'Context'):
+            self.data.session = ctxd.session
+            self.data.session['counter'] = ctxd.session.get('counter', 0) + 1
+            
+        def get_visits(self):
+            return self.data.session['counter']
+
+.. note:: 
+
+    We will cover all the Fixture properties in the :ref:`fixtures` sectiom in detail. For now we are using the 
+    take_on method to basically increment the session['counter']
+
+We then add a fixture method called get_visits which we will use in our action to access our fixture data and include
+it to our context.
+::
+
+    class Context(DefaultContext):
+        visited = Visited()
+
+In our action we now can use our new fixture simply by adding the folloing code
+::
+
+    visited = ctxd.visited.get_visits()
+
+where ctxd is our **context**, **visited** is our **custom fixture** and **get_visits()** is our method.
+
+and we simply add visted to the dictionary we are returning to the template
+::
+
+    return dict(msg='Hello Websaw World', visited=visited)
+
+Now all that is left for us to do is to style and display the infomration in our index.html as such:
+::
+
+    [[extend "app_layout.html"]]
+    <div  class = "container">
+      <div class = "columns">
+        <div class = "column has-text-centered">
+          <div class = "notification is-primary">
+            [[=msg]]    
+          </div>
+          </div>
+            <div class = "column has-text-centered">
+              <div class = "notification is-info">
+                You have visited this site [[=visited]] times. Dont be a stranger!!    
+              </div>
+            </div>
+        </div>
+    </div>                
+
+
+We could equally well access the ctxd.session object and increment it directly in our **hello_world** action 
+but now **ANY** action using our **ctxd** that requires a count of the visits can access our **Visits** fixture or not
+as the case may be.
+
+Maybe not the most usefull of fixtures we will ever use but it should show the basic concept. If you think for example
+of creating an authorization fixture then things become a lot more meaningfull.
+
+Pretty neat stuff !!
+
+So far we have briefly mentioned the most critical building blocks mainly
+    * **Context**
+    * **Fixtures**
+    * **Templates**
+
+You will note that so far we have not mentioned things like **request**, **response** and **sessions** that make up any 
+HTTP framework.
+
+This does not mean that they are not there .. far from it. 
+
+Where *Websaw* differs from similar frameworks is that is that we do **NOT** use globals for the above. Instead they are 
+all objects within the application context and can be accessesd via the context
+::
+    
+    session = ctx.session
+    request = ctx.request
+    ...
+
+which enables us to have a much **leaner**, **cleaner** and **meaner** framework overall.
+
+What this means for you as developer is that you have unrivalled flexibilty in your applicaitons with the sure knowledge that
+your application is thread safe and secure.
+
+
+
+
 

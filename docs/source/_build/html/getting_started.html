@@ -16,7 +16,7 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Running Websaw" href="running.html" />
+    <link rel="next" title="Fixtures" href="fixtures.html" />
     <link rel="prev" title="Installation" href="installation.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -50,10 +50,11 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#our-first-application">Our First Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-templates">Using Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#our-first-fxture">Our First Fxture</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="running.html">Running Websaw</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop.html">Developing Your Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixtures.html">Fixtures</a></li>
 </ul>
 
 <div class="relations">
@@ -61,7 +62,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
-      <li>Next: <a href="running.html" title="next chapter">Running Websaw</a></li>
+      <li>Next: <a href="fixtures.html" title="next chapter">Fixtures</a></li>
   </ul></li>
 </ul>
 </div>
@@ -85,7 +86,8 @@
             
   <div class="section" id="getting-started">
 <span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>Assuming you have successfully installed <em>Websaw</em> by following the <a class="reference internal" href="installation.html#installation-label"><span class="std std-ref">Installation</span></a> procudure you should now have the following depending on what installation method you chose.</p>
+<p>Assuming you have successfully installed <em>Websaw</em> by following the <a class="reference internal" href="installation.html#installation-label"><span class="std std-ref">Installation</span></a> procedure you
+should now have the following depending on the installation method you chose.</p>
 <p>If you installed using pip:</p>
 <ul class="simple">
 <li>latest stable version of websaw and dependancies installed in your venv</li>
@@ -152,8 +154,8 @@
 <p>As I genrally use vscode simply type code . in the root directory brings up a new instande of vscode</p>
 <div class="section" id="our-first-application">
 <h2>Our First Application<a class="headerlink" href="#our-first-application" title="Permalink to this headline">¶</a></h2>
-<p>As per tradition we are going to create a simple Hello World app to understnad the basics of the <em>Websaw</em> framewok after which
-we will get into a lot more depth and detail regarding the tools and techniques being used.</p>
+<p>As per tradition we are going to create a simple Hello World app to understnad the basics of the <em>Websaw</em> framewok
+after which we will get into a lot more depth and detail regarding the tools and techniques being used.</p>
 <p>For those of you who want to dive right into a slightly more complex application there is a dedicated
 <a class="reference external" href="https://eudorajab1.github.io/">Websaw Examples and Tutorials</a> that will walk you through some of the more complex examples.</p>
 <p>Either way it you are new to <em>Websaw</em> we reccomend following along here as these excercises are designed to give you the building blocks
@@ -210,8 +212,10 @@ then you can simply imprt what you need into each module but more on that later.
 <p class="first admonition-title">Note</p>
 <p class="last">We do not need seperate routing tables setup. This is all done by <em>Websaw</em> under the hood.</p>
 </div>
-<p>Followd by our function decleration. Once again it is important to note that the route and function names need not be the same.
-In this case as we only have one function in our module it is easier to register our route as <strong>index</strong> as you will see later.</p>
+<p>Followd by our function decleration. Once again it is important to note that the route and function
+names need not be the same.</p>
+<p>In this case as we only have one function in our module it is easier to register our route as <strong>index</strong> as
+you will see later.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">All <strong>actions</strong> in <em>Websaw</em> take context as a mandatory first argument</p>
@@ -221,7 +225,8 @@ In this case as we only have one function in our module it is easier to register
 <p>You can close and save controllers.py and open __init__.py</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Once aganin we could probably have all this code in a single module but as your app grows it becaomes paramount to have things structured.</p>
+<p class="last">Once aganin we could probably have all this code in a single module but as your app grows it
+becomes paramount to have things structured.</p>
 </div>
 <p>Add the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## __init__.py ##</span>
@@ -252,6 +257,231 @@ if forget to add it and in effect <a class="reference external" href="http://loc
 are equivalent</p>
 </div>
 <p>Well done .. you are now ready to see what <em>Websaw</em> can really do!!</p>
+</div>
+<div class="section" id="using-templates">
+<h2>Using Templates<a class="headerlink" href="#using-templates" title="Permalink to this headline">¶</a></h2>
+<p>Templates are a tried and tested way to give your application a uniform <em>look and feel</em> whilst at the same
+time allowing you to use one or more .css libraries for styling including your own custom styling.</p>
+<p>If you are not familiar with html and css there are many excellent sites that can get you up to speed quickly and it
+is beyond the scope of this document to cover this.</p>
+<p>That having been said lets jump into adding a bit of ‘zing’ to our otherwise drab and sad looking app.</p>
+<p>The first thing we need to do is create a directory where we will be storing our templates. By convention we call this
+directory <strong>templates</strong> and create and empt __init__.py.</p>
+<p>From within your hello_world directory run the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">templates</span>
+<span class="n">touch</span> <span class="n">templates</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="n">cd</span> <span class="n">templates</span>
+</pre></div>
+</div>
+<p>Now with your editor of choice create a new file called <strong>app_layout.html</strong> which we will use as our application
+wide template.</p>
+<p>Once open lets add the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;base href=&quot;[[=URL(&#39;static&#39;)]]/&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;data:image/x-icon;base64,AAABAAEAAQEAAAEAIAAwAAAAFgAAACgAAAABAAAAAgAAAAEAIAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAA==&quot;/&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css&quot; integrity=&quot;sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==&quot; crossorigin=&quot;anonymous&quot; /&gt;
+[[block page_head]]&lt;!-- individual pages can customize header here --&gt;[[end]]
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;
+    &lt;!-- Navigation bar --&gt;
+    &lt;nav class=&quot;navbar is-light&quot; role=&quot;navigation&quot; aria-label=&quot;main navigation&quot;&gt;
+    &lt;!-- Logo --&gt;
+    &lt;a class=&quot;navbar-item &quot; href=&quot;[[=URL(&#39;index&#39;)]]&quot;&gt;
+        &lt;div class=&quot;icon-text&quot;&gt;
+          &lt;span class=&quot;icon has-text-success&quot;&gt;
+            &lt;i class=&quot;fas fa-home fa-lg&quot;&gt;&lt;/i&gt;
+          &lt;/span&gt;
+          &lt;span class=&quot;has-text-primary is-size-5 has-text-weight-semibold&quot;&gt;Home&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/a&gt;
+    &lt;a role=&quot;button&quot; class=&quot;navbar-burger&quot; aria-label=&quot;menu&quot; aria-expanded=&quot;false&quot; data-target=&quot;my-navbar&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+    &lt;/a&gt;
+
+    &lt;!-- Left menu ul/li --&gt;
+    [[block page_menu_items]]&lt;!-- individual pages can add menu items here --&gt;[[end]]
+
+    [[block page_left_menu]][[end]]
+    &lt;!-- Right menu ul/li --&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+&lt;!-- beginning of HTML inserted by extending template --&gt;
+[[include]]
+&lt;!-- end of HTML inserted by extending template --&gt;
+&lt;footer class=&quot;footer is-small&quot;&gt;
+  &lt;div class=&quot;content has-text-centered&quot;&gt;
+    &lt;p&gt;Powered by &lt;strong&gt;&amp;nbsp;WEBSAW&lt;/strong&gt; &lt;a href=&quot;https://websaw.com&quot;&gt;&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+[[block page_scripts]]&lt;!-- individual pages can add scripts here --&gt;[[end]]
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>Feel free to the styling library of your choide. Here we are using <strong>Bulma</strong> but we could equally well have used
+<strong>Bootstrp</strong> or eve <strong>no.css</strong>. The choice is really yours.</p>
+<p>You will also note we are using the cdn’s which is again by choice. If you wanted to use local files you need to create a
+<strong>static</strong> folder in the hello_world app and create a <strong>css</strong> and <strong>js</strong> subfolder.</p>
+<p>The most important thing to notice here is the <strong>[[include]]</strong> directive. We will extend all our templates (.html files)
+with this app_layout.html to give them a consitant and similar look and feel.</p>
+<p>It also saves us the hassle of having to import libraries for every template we generate.</p>
+<p>So .. now that we have our app layout sorted out .. lets take a look at what we can to do with our application.</p>
+<p>We start by creating a new file called <strong>index.html</strong> which will extend the app_layout.html as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[[extend &quot;app_layout.html&quot;]]
+&lt;div class = &quot;container&quot;&gt;
+  &lt;div class = &quot;columns&quot;&gt;
+    &lt;div class = &quot;column has-text-centered&quot;&gt;
+      &lt;div class = &quot;notification is-primary&quot;&gt;
+        [[=msg]]
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+<p>and that should be it.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">[[=msg]] is the information that we will display on this page as proviced by our heelo_world function.</p>
+</div>
+<p>So lets head over to our controllers.py and see what we need to do.</p>
+<p>The first thing we need to do is to tell our function to use the index.html template. We do this by adding the
+followng:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This should be declared after the route directive and before the function decleration</p>
+</div>
+<p><em>Websaw</em> knows that this is a template and updates the context template <strong>Fixture</strong> accordingly.</p>
+<p>We will be covering
+<strong>Fixture</strong> next in brief and in detail in the <strong>Fixtures</strong> section of this manual. For now lets just say that there is
+some ‘under the hood’ sugar that <em>Websaw</em> has to render the index template with the result of the hello_world function.</p>
+<p>In order for the template to render correctly we need to return a dictionary so we should update our function as fillows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Hello Websaw World&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Our complete action should now look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;indes.html&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">ctxd</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Hello Websaw World&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Go ahead and run it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">hello_world</span>
+</pre></div>
+</div>
+<p>or just refresh your browser.</p>
+<p>Starting to look a little bit better now. So much so in fact that we should consider notifying visitors on the
+number of times they have actually visited our application.</p>
+<p>To do this lets create a <strong>Fixture</strong></p>
+</div>
+<div class="section" id="our-first-fxture">
+<h2>Our First Fxture<a class="headerlink" href="#our-first-fxture" title="Permalink to this headline">¶</a></h2>
+<p>Before we jump in and create our <strong>Fixture</strong> lets have a look at what a <em>Websaw</em> fixtures is.</p>
+<p>There are many and varied roles for <strong>fixtures</strong> in <em>Websaw</em> that we will be covering in a dedicated section later
+so for now lets just try to think of them generally as similar to of JS components.</p>
+<p><em>Websaw</em> has a number of “out of the box” fixtures which we can subclass or extend  in order to generate
+specific functionaltiy that we may need within the context of our application.</p>
+<p>These are all detailed extensively in the <a class="reference internal" href="fixtures.html#fixtures"><span class="std std-ref">Fixtures</span></a> section of this manual.</p>
+<p>For now the important things to note about <strong>Fixtures</strong> is as foolows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>they are only initialised when required (on the fly).</li>
+<li>they are context specific and can comprise of other fixtures.</li>
+<li>they are completely thread safe and secure.</li>
+</ul>
+</div></blockquote>
+<p>So lets get to it. Our objective is to create a fixture that will simply count the number of times a particular
+browser has visited our site.</p>
+<p>We can extend this later to store the results in a database of our chosing but for now we will use the session
+to keep a count.</p>
+<p>So lets get going.</p>
+<p>The first thing we need to do is to import the Fixture base class from websaw.core</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="kn">from</span> <span class="nn">websaw.core</span> <span class="k">import</span> <span class="n">Fixture</span>
+</pre></div>
+</div>
+<p>Then we can define our new fixture called <strong>Visited</strong> as such:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Visited</span><span class="p">(</span><span class="n">Fixture</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">take_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctxd</span><span class="p">:</span> <span class="s1">&#39;Context&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">ctxd</span><span class="o">.</span><span class="n">session</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;counter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ctxd</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;counter&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">get_visits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s1">&#39;counter&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We will cover all the Fixture properties in the <a class="reference internal" href="fixtures.html#fixtures"><span class="std std-ref">Fixtures</span></a> sectiom in detail. For now we are using the
+take_on method to basically increment the session[‘counter’]</p>
+</div>
+<p>We then add a fixture method called get_visits which we will use in our action to access our fixture data and include
+it to our context.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Context</span><span class="p">(</span><span class="n">DefaultContext</span><span class="p">):</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="n">Visited</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In our action we now can use our new fixture simply by adding the folloing code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visited</span> <span class="o">=</span> <span class="n">ctxd</span><span class="o">.</span><span class="n">visited</span><span class="o">.</span><span class="n">get_visits</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>where ctxd is our <strong>context</strong>, <strong>visited</strong> is our <strong>custom fixture</strong> and <strong>get_visits()</strong> is our method.</p>
+<p>and we simply add visted to the dictionary we are returning to the template</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Hello Websaw World&#39;</span><span class="p">,</span> <span class="n">visited</span><span class="o">=</span><span class="n">visited</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now all that is left for us to do is to style and display the infomration in our index.html as such:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[[extend &quot;app_layout.html&quot;]]
+&lt;div  class = &quot;container&quot;&gt;
+  &lt;div class = &quot;columns&quot;&gt;
+    &lt;div class = &quot;column has-text-centered&quot;&gt;
+      &lt;div class = &quot;notification is-primary&quot;&gt;
+        [[=msg]]
+      &lt;/div&gt;
+      &lt;/div&gt;
+        &lt;div class = &quot;column has-text-centered&quot;&gt;
+          &lt;div class = &quot;notification is-info&quot;&gt;
+            You have visited this site [[=visited]] times. Dont be a stranger!!
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+<p>We could equally well access the ctxd.session object and increment it directly in our <strong>hello_world</strong> action
+but now <strong>ANY</strong> action using our <strong>ctxd</strong> that requires a count of the visits can access our <strong>Visits</strong> fixture or not
+as the case may be.</p>
+<p>Maybe not the most usefull of fixtures we will ever use but it should show the basic concept. If you think for example
+of creating an authorization fixture then then things become a lot more meaningfull.</p>
+<p>Pretty neat stuff !!</p>
+<dl class="docutils">
+<dt>So far we have briefly mentioned the most critical building blocks mainly</dt>
+<dd><ul class="first last simple">
+<li><strong>Context</strong></li>
+<li><strong>Fixtures</strong></li>
+<li><strong>Templates</strong></li>
+</ul>
+</dd>
+</dl>
+<p>You will note that so far we have not mentioned things like <strong>request</strong>, <strong>response</strong> and <strong>sessions</strong> that make up any
+HTTP framework.</p>
+<p>This does not mean that they are not there .. far from it.</p>
+<p>Where <em>Websaw</em> differs from similar frameworks is that is that we do <strong>NOT</strong> use globals for the above. Instead they are
+all objects within the application context which enables us to have a much leaner, cleaner and meaner framework overall.</p>
+<p>What this means for you as developer is that you have unrivalled flexibilty in your applicaitons with the sure knowledge that
+your application is thread safe and secure.</p>
 </div>
 </div>
 
