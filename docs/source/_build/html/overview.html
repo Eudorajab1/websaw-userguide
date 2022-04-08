@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Overview &#8212; WebSaw  documentation</title>
+    <title>Introduction &#8212; WebSaw  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -44,24 +44,7 @@
 
 
 
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="running.html">Running Websaw</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop.html">Developing Your Apps</a></li>
-</ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Welcome to WebSaw!</a></li>
-      <li>Next: <a href="installation.html" title="next chapter">Installation</a></li>
-  </ul></li>
-</ul>
-</div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -73,19 +56,45 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#main-features">Main Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#design-overview">Design Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixtures.html">Fixtures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context.html">Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mixins.html">Mixins</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to WebSaw!</a></li>
+      <li>Next: <a href="installation.html" title="next chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
         </div>
       </div>
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p><strong>Websaw</strong> (Web <em>/Software Application Warehouse/</em>) is a lightweight, ultrafast web application framework
 that offers feature rich <strong>‘out of the box functionality’</strong> coupled with an unparalleled level of
 <cite>flexibility</cite> to develop <em>secure, robust applications</em> <strong>rapidly</strong>.</p>
-<p><strong>Lightweight</strong></p>
+<div class="section" id="main-features">
+<h2>Main Features<a class="headerlink" href="#main-features" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Lightweight</strong></p>
 <ul class="simple">
 <li>usese ombott a lightweight transport layer</li>
 <li>small footprint</li>
@@ -111,12 +120,39 @@ that offers feature rich <strong>‘out of the box functionality’</strong> cou
 <li>incorporate js, vue or jquery components</li>
 <li>connect seamlessly to multiple industry standard database engines</li>
 </ul>
+</div></blockquote>
+</div>
+<div class="section" id="design-overview">
+<span id="id1"></span><h2>Design Overview<a class="headerlink" href="#design-overview" title="Permalink to this headline">¶</a></h2>
 <p><strong>Websaw</strong> has been designed to enable users of all levels to develop fully functional rich applicacaions
-irrespective of skill level or experience. In fact only a minimal knowledge of python is required to
+irrespective of skill level or experience. In fact only a minimal knowledge of web developement is required to
 get up and running in minutes.</p>
-<p>All in all <em>Websaw</em> is truly a remarkable framework on which you can build amazing apps.</p>
+<dl class="docutils">
+<dt><strong>Websaw</strong> consists of three distinct layers or pillars on which the entire framework stands:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference internal" href="fixtures.html#fixtures"><span class="std std-ref">Fixtures</span></a></li>
+<li><a class="reference internal" href="context.html#context"><span class="std std-ref">Context</span></a></li>
+<li><a class="reference internal" href="application.html#application"><span class="std std-ref">Application</span></a></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Fixtures</strong> are <em>Websaw’s</em> basic building blocks.
+They can act as middleware (e.g. auth barrier or render routing action results using template)
+<strong>OR</strong> as services (e.g. provide database connections) or a combination of the two.</p>
+<p><strong>Context</strong> is the <em>central hub</em> which is in charge of <strong>fixture</strong> maintenance (initialization/teardown/cleanup)
+as well as maintinaing communication between <strong>actions</strong> and <strong>fixtures</strong>. In addition the <strong>comtext</strong> layer
+maintains communication between individual <strong>fixtures</strong> themselves.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In broad terms we can think of the <strong>context</strong> layer as the <em>services provider</em> and <strong>fixtures</strong>
+as <cite>services</cite>.</p>
+</div>
+<p>The <strong>Application</strong> layer is responsible for collecting routes along with mounting and wrapping each action by
+route handler with the correct setup/teardown procedures.</p>
+<p>All in all <em>Websaw</em> is truly a remarkably robust and flexible framework on which you can build amazing apps.</p>
 <p><em>Cant Wait to get started ?</em></p>
 <p>Head on over to <a class="reference internal" href="installation.html#installation-label"><span class="std std-ref">Installation</span></a> section to get up and running in minutes</p>
+</div>
 </div>
 
 

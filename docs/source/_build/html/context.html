@@ -1,0 +1,133 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Context &#8212; WebSaw  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Application" href="application.html" />
+    <link rel="prev" title="Fixtures" href="fixtures.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/websaw-logos_transparent.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">A light, fully fucntional, ultra fast, flexible and feauture rich web framework</p>
+
+
+
+
+
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixtures.html">Fixtures</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mixins.html">Mixins</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="fixtures.html" title="previous chapter">Fixtures</a></li>
+      <li>Next: <a href="application.html" title="next chapter">Application</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="context">
+<span id="id1"></span><h1>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h1>
+<p>As mentioned earlier <strong>Context</strong> (<strong>ctx</strong>) is the <em>central hub</em> which is in charge of <strong>fixture</strong> maintenance
+(initialization/teardown/cleanup) as well as maintinaing communication between <strong>actions</strong> and
+<strong>fixtures</strong>.</p>
+<p>In addition the <strong>comtext</strong> layer maintains communication between individual <strong>fixtures</strong> themselves.</p>
+<p>Suffice to say the <strong>context</strong> layer is key to the <em>Websaw</em> framework and performs many ‘under the hood’
+functions in order to tie all layers together.</p>
+<p>It is beyond the scope of this document to describe how the <strong>context</strong> layer functions in great
+detail as there is simply too much to cover here.</p>
+<p>The main things to understand about the <strong>context</strong> layer are as follows:</p>
+<ul class="simple">
+<li>there are two builtin base classes of <strong>context</strong> namely <strong>DefaultContxt</strong> and <strong>BaseContext</strong></li>
+<li><strong>ctxd</strong> (design context) is how we refer to our context at module level
+and generally override <strong>DefaultContext</strong></li>
+<li><strong>cctx()</strong> (current context) returns the context (ctx) from any context class</li>
+<li><strong>ctx</strong> is always the first paramater in and action’s function</li>
+</ul>
+<p>To get the <strong>ctx</strong> using <strong>cctx</strong> you would do somthing like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ctx</span> <span class="o">=</span> <span class="n">BaseContext</span><span class="o">.</span><span class="n">cctx</span><span class="p">()</span> <span class="n">OR</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">DefaultContext</span><span class="o">.</span><span class="n">cctx</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Both are equivalent in this case.</p>
+<p>We will see in later sections we we look at mixins and various other functionality just how much of an important
+role our <strong>context</strong> layer performs.</p>
+<p>For now that is all we really need to know about <strong>Context</strong> so lets take a closer look at the
+<a class="reference internal" href="application.html#application"><span class="std std-ref">Application</span></a> layer.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2022 WebSaw.
+      
+      |
+      <a href="_sources/context.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

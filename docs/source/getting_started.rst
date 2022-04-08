@@ -364,8 +364,8 @@ Our complete action should now look like this:
 ::
 
     @app.route('index')
-    @app.use('indes.html')
-    def hello_world(ctx: Context)
+    @app.use('index.html')
+    def hello_world(ctx: Context):
         return dict(msg='Hello Websaw World')
 
 Go ahead and run it 
@@ -405,9 +405,8 @@ to keep a count.
 So lets get going.
 
 The first thing we need to do is to import the Fixture base class from websaw.core
-
 ::
-    ...
+
     from websaw.core import Fixture
 
 Then we can define our new fixture called **Visited** as such:

@@ -23,3 +23,6 @@ Head over to our :ref:`installation_label` section
    installation
    getting_started
    fixtures
+   context
+   application
+   mixins

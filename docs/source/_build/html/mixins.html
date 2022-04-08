@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Index &#8212; WebSaw  documentation</title>
+    <title>Mixins &#8212; WebSaw  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,8 +14,9 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Application" href="application.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -56,20 +56,24 @@
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fixtures.html">Fixtures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="context.html">Context</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mixins.html">Mixins</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mixins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#so-what-exactly-is-a-mixin">So what exactly is a mixin?</a></li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="application.html" title="previous chapter">Application</a></li>
   </ul></li>
 </ul>
 </div>
@@ -79,11 +83,25 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="mixins">
+<span id="id1"></span><h1>Mixins<a class="headerlink" href="#mixins" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><strong>Mixins have to be one of the most innovative and time saving features of Websaw</strong></div></blockquote>
+<div class="section" id="so-what-exactly-is-a-mixin">
+<h2>So what exactly is a mixin?<a class="headerlink" href="#so-what-exactly-is-a-mixin" title="Permalink to this headline">¶</a></h2>
+<p>In essence a <strong>mixin</strong> can be anything that you could use in any other application.</p>
+<p>This can range from a simple generic action (such as a logger) to an application itself.</p>
+<p>In order to understand <strong>mixins</strong> lets take a look at the <strong>simple</strong> application that ships as
+standard with <em>Websaw</em> and see how it all fits together.</p>
+<p>The first thing that we need to note is that by convention in our apps directory structure we have a
+folder called <strong>mixins</strong> and yes you guessed it .. this is where we store our <strong>mixins</strong>.</p>
+<p>The only real difference between <strong>mixins</strong> and <strong>apps</strong> is that we do not mount our mixins.</p>
+<p>Instead the <em>host</em> application will mount the <strong>mixin</strong> or even multiple <strong>mixins</strong> as part of its
+own <strong>mount()</strong>.</p>
+<p>All <strong>mixin</strong> functionality including templates, actions fixtures and databases as created in the
+<strong>mixin</strong> is immediately available to the <strong>host</strong> app.</p>
+<p>So lets take a look at an example:</p>
+</div>
 </div>
 
 
@@ -95,6 +113,9 @@
     <div class="footer">
       &copy;2022 WebSaw.
       
+      |
+      <a href="_sources/mixins.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

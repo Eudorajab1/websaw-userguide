@@ -45,9 +45,9 @@ irrespective of skill level or experience. In fact only a minimal knowledge of w
 get up and running in minutes.
 
 **Websaw** consists of three distinct layers or pillars on which the entire framework stands:
-    - **Fixtures**
-    - **Context**
-    - **Application**
+    - :ref:`Fixtures`
+    - :ref:`Context`
+    - :ref:`Application`
 
 **Fixtures** are *Websaw's* basic building blocks.
 They can act as middleware (e.g. auth barrier or render routing action results using template)
