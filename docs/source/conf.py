@@ -18,10 +18,11 @@ html_static_path = ['_static']
 html_sidebars = {
     "**": [
         "about.html",
+        "searchbox.html",
         "navigation.html",
         "relations.html",
-        "searchbox.html",
-        "donate.html",
+        
+#        "donate.html",
     ]
 }
 html_theme_options = {

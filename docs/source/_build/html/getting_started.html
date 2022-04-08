@@ -44,28 +44,7 @@
 
 
 
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#our-first-application">Our First Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-templates">Using Templates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#our-first-fxture">Our First Fxture</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fixtures.html">Fixtures</a></li>
-</ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
-      <li>Next: <a href="fixtures.html" title="next chapter">Fixtures</a></li>
-  </ul></li>
-</ul>
-</div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -77,7 +56,30 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#our-first-application">Our First Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-templates">Using Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-fxture">Adding a Fxture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fixtures.html">Fixtures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context.html">Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="fixtures.html" title="next chapter">Fixtures</a></li>
+  </ul></li>
+</ul>
+</div>
         </div>
       </div>
       <div class="documentwrapper">
@@ -362,18 +364,17 @@ followng:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">This should be declared after the route directive and before the function decleration</p>
 </div>
-<p><em>Websaw</em> knows that this is a template and updates the context template <strong>Fixture</strong> accordingly.</p>
-<p>We will be covering
-<strong>Fixture</strong> next in brief and in detail in the <strong>Fixtures</strong> section of this manual. For now lets just say that there is
-some ‘under the hood’ sugar that <em>Websaw</em> has to render the index template with the result of the hello_world function.</p>
-<p>In order for the template to render correctly we need to return a dictionary so we should update our function as fillows:</p>
+<p><em>Websaw</em> has a builtin <strong>template fixture</strong> that deals with initialising and rendering our index.html.</p>
+<p>We will be creating our own simple <strong>fixture</strong> next and cover <strong>fixtures</strong> in depth in the <a class="reference internal" href="fixtures.html#fixtures"><span class="std std-ref">Fixtures</span></a> section.</p>
+<p>In order for our template to render correctly we need to return a dictionary so we should update our function as
+follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Hello Websaw World&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Our complete action should now look like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;indes.html&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">ctxd</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Hello Websaw World&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -384,14 +385,11 @@ some ‘under the hood’ sugar that <em>Websaw</em> has to render the index tem
 <p>or just refresh your browser.</p>
 <p>Starting to look a little bit better now. So much so in fact that we should consider notifying visitors on the
 number of times they have actually visited our application.</p>
-<p>To do this lets create a <strong>Fixture</strong></p>
+<p>To do this lets create a very simple <strong>Fixture</strong></p>
 </div>
-<div class="section" id="our-first-fxture">
-<h2>Our First Fxture<a class="headerlink" href="#our-first-fxture" title="Permalink to this headline">¶</a></h2>
-<p>Before we jump in and create our <strong>Fixture</strong> lets have a look at what a <em>Websaw</em> fixtures is.</p>
-<p>There are many and varied roles for <strong>fixtures</strong> in <em>Websaw</em> that we will be covering in a dedicated section later
-so for now lets just try to think of them generally as similar to of JS components.</p>
-<p><em>Websaw</em> has a number of “out of the box” fixtures which we can subclass or extend  in order to generate
+<div class="section" id="adding-a-fxture">
+<span id="adding-a-fixture"></span><h2>Adding a Fxture<a class="headerlink" href="#adding-a-fxture" title="Permalink to this headline">¶</a></h2>
+<p><em>Websaw</em> has a number of “out of the box” fixtures which we can subclass or extend in order to generate
 specific functionaltiy that we may need within the context of our application.</p>
 <p>These are all detailed extensively in the <a class="reference internal" href="fixtures.html#fixtures"><span class="std std-ref">Fixtures</span></a> section of this manual.</p>
 <p>For now the important things to note about <strong>Fixtures</strong> is as foolows:</p>
@@ -402,14 +400,13 @@ specific functionaltiy that we may need within the context of our application.</
 <li>they are completely thread safe and secure.</li>
 </ul>
 </div></blockquote>
-<p>So lets get to it. Our objective is to create a fixture that will simply count the number of times a particular
+<p>So lets get to it. Our objective is to create a simple <em>fixture</em> that will simply count the number of times a particular
 browser has visited our site.</p>
 <p>We can extend this later to store the results in a database of our chosing but for now we will use the session
 to keep a count.</p>
 <p>So lets get going.</p>
 <p>The first thing we need to do is to import the Fixture base class from websaw.core</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="kn">from</span> <span class="nn">websaw.core</span> <span class="k">import</span> <span class="n">Fixture</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">websaw.core</span> <span class="k">import</span> <span class="n">Fixture</span>
 </pre></div>
 </div>
 <p>Then we can define our new fixture called <strong>Visited</strong> as such:</p>
@@ -434,10 +431,10 @@ it to our context.</p>
 </pre></div>
 </div>
 <p>In our action we now can use our new fixture simply by adding the folloing code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visited</span> <span class="o">=</span> <span class="n">ctxd</span><span class="o">.</span><span class="n">visited</span><span class="o">.</span><span class="n">get_visits</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visited</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">visited</span><span class="o">.</span><span class="n">get_visits</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>where ctxd is our <strong>context</strong>, <strong>visited</strong> is our <strong>custom fixture</strong> and <strong>get_visits()</strong> is our method.</p>
+<p>where ctx is our <strong>context</strong>, <strong>visited</strong> is our <strong>custom fixture</strong> and <strong>get_visits()</strong> is our method.</p>
 <p>and we simply add visted to the dictionary we are returning to the template</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Hello Websaw World&#39;</span><span class="p">,</span> <span class="n">visited</span><span class="o">=</span><span class="n">visited</span><span class="p">)</span>
 </pre></div>
@@ -464,24 +461,21 @@ it to our context.</p>
 but now <strong>ANY</strong> action using our <strong>ctxd</strong> that requires a count of the visits can access our <strong>Visits</strong> fixture or not
 as the case may be.</p>
 <p>Maybe not the most usefull of fixtures we will ever use but it should show the basic concept. If you think for example
-of creating an authorization fixture then then things become a lot more meaningfull.</p>
+of creating an authorization fixture then things become a lot more meaningfull.</p>
 <p>Pretty neat stuff !!</p>
-<dl class="docutils">
-<dt>So far we have briefly mentioned the most critical building blocks mainly</dt>
-<dd><ul class="first last simple">
+<p>So far we have seen how the three main layers of <em>Websaw</em> in action.</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Fixture</strong></li>
 <li><strong>Context</strong></li>
-<li><strong>Fixtures</strong></li>
-<li><strong>Templates</strong></li>
+<li><strong>Application</strong></li>
 </ul>
-</dd>
-</dl>
-<p>You will note that so far we have not mentioned things like <strong>request</strong>, <strong>response</strong> and <strong>sessions</strong> that make up any
+</div></blockquote>
+<p>You will also note that so far we have not mentioned things like <strong>request</strong>, <strong>response</strong> and <strong>sessions</strong> that make up any
 HTTP framework.</p>
 <p>This does not mean that they are not there .. far from it.</p>
-<p>Where <em>Websaw</em> differs from similar frameworks is that is that we do <strong>NOT</strong> use globals for the above. Instead they are
-all objects within the application context which enables us to have a much leaner, cleaner and meaner framework overall.</p>
-<p>What this means for you as developer is that you have unrivalled flexibilty in your applicaitons with the sure knowledge that
-your application is thread safe and secure.</p>
+<p>We will cover these in the <strong>Context</strong> section of the user guide but for now lets take a deeper look into <strong>fixture</strong> layer
+by heading over to the <a class="reference internal" href="fixtures.html#fixtures"><span class="std std-ref">Fixtures</span></a> seciton.</p>
 </div>
 </div>
 

@@ -16,6 +16,7 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Context" href="context.html" />
     <link rel="prev" title="Getting Started" href="getting_started.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -43,22 +44,7 @@
 
 
 
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Fixtures</a></li>
-</ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="getting_started.html" title="previous chapter">Getting Started</a></li>
-  </ul></li>
-</ul>
-</div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -70,7 +56,24 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fixtures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context.html">Context</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="getting_started.html" title="previous chapter">Getting Started</a></li>
+      <li>Next: <a href="context.html" title="next chapter">Context</a></li>
+  </ul></li>
+</ul>
+</div>
         </div>
       </div>
       <div class="documentwrapper">
@@ -79,6 +82,178 @@
             
   <div class="section" id="fixtures">
 <span id="id1"></span><h1>Fixtures<a class="headerlink" href="#fixtures" title="Permalink to this headline">¶</a></h1>
+<p>As described in the <a class="reference internal" href="overview.html#design-overview"><span class="std std-ref">Design Overview</span></a> section, <strong>Fixtures</strong> are <em>Websaw’s</em> basic building blocks.
+They can act as middleware (e.g. auth barrier or render routing action results using template)
+<strong>OR</strong> as services (e.g. provide database connections) or a combination of the two.</p>
+<p>To get familiar with fixturies lets just create a slightly more usefull one than we we created in our
+<a class="reference internal" href="getting_started.html#adding-a-fixture"><span class="std std-ref">Adding a Fxture</span></a> section.</p>
+<p>To start with lets take a look at the <strong>Fixture</strong> base class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Fixture</span><span class="p">:</span>
+
+    <span class="c1"># Central thread local storage to hold local data of all fixtures</span>
+    <span class="n">_local</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">local</span><span class="p">()</span>
+
+    <span class="c1"># Should the fixture be treated as a set of hooks - take_on/take_off.</span>
+    <span class="c1"># If it is set to True, then &#39;take_off&#39; method is called</span>
+    <span class="c1"># regardless of whether &#39;take_on&#39; method was called</span>
+    <span class="n">is_hook</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># The name of the fixture in the Context.</span>
+    <span class="c1"># It is intended to be used in generic fixtures (e.g. Tempalte)</span>
+    <span class="c1"># and supposed to be set in __init__</span>
+    <span class="n">context_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">initialize_safe_storage</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the central thread local storage of all fixtures.</span>
+<span class="sd">        We do it with one shot!</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">fixtures_data</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">prepare_for_use</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fixture</span><span class="p">:</span> <span class="s1">&#39;Fixture&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize the thread local storage for concrete &#39;fixture&#39;.&quot;&quot;&quot;</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">fixtures_data</span><span class="p">[</span><span class="n">fixture</span><span class="p">]</span> <span class="o">=</span> <span class="n">SimpleNamespace</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SimpleNamespace</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return the thread local fixture storage.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">fixtures_data</span><span class="p">[</span><span class="bp">self</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">app_mounted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Is called when app is mounted.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">take_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Is called when the fixture is accessed as the context attribute.</span>
+<span class="sd">        This hook is intended for the fixture initialization when it is accessed</span>
+<span class="sd">        the first time during request processing.</span>
+<span class="sd">        The return value is what the consumer will get when accessing the fixture</span>
+<span class="sd">        as the context attribute. So it should return something useful</span>
+<span class="sd">        e.g. opened file-descriptor or db-connection, if it returns None</span>
+<span class="sd">        then the fixture itself will be used.</span>
+<span class="sd">        The return value is cached in the context until take_off-hook is called.</span>
+<span class="sd">        Note: This hook is only called if it&#39;s the request processing:</span>
+<span class="sd">        @app.route(&#39;index&#39;)</span>
+<span class="sd">        @app.use(ctxd.foo)  # won&#39;t be called as it&#39;s app loading stage</span>
+<span class="sd">        def some(ctx):</span>
+<span class="sd">            ctx.foo         # will be called as it&#39;s request processing</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">take_off</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Is called at the end of request processing.</span>
+<span class="sd">        if self.is_hook is set to False then it is only called if take_on-hook was called</span>
+<span class="sd">        This hook is for cleanup/tear down action (e.g. to close a file or db-connection)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>As you can see there are 3 method-hooks to be overwritten:</dt>
+<dd><ul class="first last simple">
+<li>app_mounted</li>
+<li>take_on</li>
+<li>take_off</li>
+</ul>
+</dd>
+</dl>
+<p>We are going to make the fixture equivalent of <a class="reference external" href="https://flask.palletsprojects.com/en/2.0.x/extensiondev/">https://flask.palletsprojects.com/en/2.0.x/extensiondev/</a>
+as a comparison to those of you familiar with flask extensions.</p>
+<p>So lets get going and create our <strong>fixture</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># apps/sqlite3_demo/app_fixtures.py</span>
+
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="kn">from</span> <span class="nn">websaw.core</span> <span class="k">import</span> <span class="n">Fixture</span>
+
+<span class="k">class</span> <span class="nc">SQLite3</span><span class="p">(</span><span class="n">Fixture</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri_or_fpath</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uri_or_fpath</span> <span class="o">=</span> <span class="n">uri_or_fpath</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+    <span class="k">def</span> <span class="nf">take_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+        <span class="c1"># self.data - thread safe local storage</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uri_or_fpath</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+        <span class="k">return</span> <span class="n">conn</span>
+
+    <span class="k">def</span> <span class="nf">take_off</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">DefaultContext</span><span class="p">):</span>
+        <span class="n">db</span><span class="p">:</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">db</span>
+        <span class="k">if</span> <span class="n">ctx</span><span class="o">.</span><span class="n">exception</span><span class="p">:</span>
+            <span class="c1"># there is some error(s) during action processing or/and</span>
+            <span class="c1"># in other fixtures, so we don&#39;t want to save changes</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now lets put it to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># apps/sqlite3_demo/controllers.py</span>
+
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="kn">from</span> <span class="nn">websaw</span> <span class="k">import</span> <span class="n">DefaultApp</span><span class="p">,</span> <span class="n">DefaultContext</span><span class="p">,</span> <span class="n">Reloader</span><span class="p">,</span> <span class="n">HTTP</span>
+<span class="kn">from</span> <span class="nn">websaw.core</span> <span class="k">import</span> <span class="n">Fixture</span>
+
+<span class="kn">from</span> <span class="nn">.app_fixtures</span> <span class="k">import</span> <span class="n">SQLite3</span>
+
+<span class="n">sqlite_db</span> <span class="o">=</span> <span class="n">Reloader</span><span class="o">.</span><span class="n">package_folder_path</span><span class="p">(</span><span class="n">__package__</span><span class="p">,</span>  <span class="s1">&#39;demo_db.sqlite&#39;</span><span class="p">)</span>
+
+<span class="c1"># lets create the table in our db</span>
+<span class="k">def</span> <span class="nf">init_db</span><span class="p">(</span><span class="n">sqlite_db</span><span class="p">):</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sqlite_db</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;CREATE TABLE IF NOT EXISTS thing(id INTEGER PRIMARY KEY, name TEXT)&#39;</span><span class="p">)</span>
+
+<span class="n">init_db</span><span class="p">(</span><span class="n">sqlite_db</span><span class="p">)</span>
+
+
+<span class="c1"># extend default context with our fixture</span>
+<span class="k">class</span> <span class="nc">Context</span><span class="p">(</span><span class="n">DefaultContext</span><span class="p">):</span>
+    <span class="c1"># to get right autocomplete in action (e.g. when ctx.sdb.exe...)</span>
+    <span class="c1"># we need to force IDE to think that cxt.sdb is type of sqlite3.Connection</span>
+    <span class="n">sdb</span><span class="p">:</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Connection</span> <span class="o">=</span> <span class="n">SQLite3</span><span class="p">(</span><span class="n">sqlite_db</span><span class="p">)</span>
+
+<span class="n">ctxd</span> <span class="o">=</span> <span class="n">Context</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">DefaultApp</span><span class="p">(</span><span class="n">ctxd</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">__package__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;sdb&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sdb</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">action</span><span class="p">:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">sdb</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM thing&#39;</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[{</span><span class="o">**</span><span class="n">r</span><span class="p">}</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;create&#39;</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTP</span><span class="p">(</span><span class="mi">429</span><span class="p">,</span> <span class="s1">&#39;Name is required&#39;</span><span class="p">)</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">sdb</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;INSERT INTO thing(name) values(?)&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,))</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">lastrowid</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTP</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="n">f</span><span class="s1">&#39;Unkown action: </span><span class="si">{action}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="n">ret</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we need to mount our app so</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># apps/sqlite3_demo/__init__.py</span>
+
+<span class="kn">from</span> <span class="nn">.controllers</span> <span class="k">import</span> <span class="n">app</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>And finally lets test it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># to insert any name into db
+http://127.0.0.1:8000/sqlite3_demo/sdb?action=create&amp;name=John
+
+# to view all rows in db
+http://127.0.0.1:8000/sqlite3_demo/sdb
+</pre></div>
+</div>
+<p>And that is pretty much it. Pretty awesome stuff!!</p>
+<p>The only limit to the usage of <strong>fixtures</strong> in your applicaitons is your immagination.</p>
 </div>
 
 

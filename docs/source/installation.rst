@@ -4,7 +4,6 @@
 ============
 Installation
 ============
-
 *Websaw* can be installed in a number of ways as follows:-
 
 * Installing from pip using venv (reccommended for development) 

@@ -113,7 +113,7 @@ So lets get going and create our **fixture**.
             db.close()
 
 
-Now lets see how we can use it:
+Now lets put it to use:
 ::
 
     # apps/sqlite3_demo/controllers.py
@@ -161,6 +161,15 @@ Now lets see how we can use it:
             raise HTTP(400, f'Unkown action: {action}')
         return dict(result=ret)
 
+Now we need to mount our app so 
+::
+
+    # apps/sqlite3_demo/__init__.py
+
+    from .controllers import app
+    
+    app.mount()
+
 And finally lets test it:
 ::
 
@@ -170,6 +179,6 @@ And finally lets test it:
     # to view all rows in db
     http://127.0.0.1:8000/sqlite3_demo/sdb
 
-And thart is pretty much it.
+And that is pretty much it. Pretty awesome stuff!!
 
-The only limit to the usage of **fixtures** in your applicaitons is in your mind.
+The only limit to the usage of **fixtures** in your applicaitons is your immagination.

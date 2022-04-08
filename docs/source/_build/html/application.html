@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Application &#8212; WebSaw  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mixins" href="mixins.html" />
+    <link rel="prev" title="Context" href="context.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/websaw-logos_transparent.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">A light, fully fucntional, ultra fast, flexible and feauture rich web framework</p>
+
+
+
+
+
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixtures.html">Fixtures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context.html">Context</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mixins.html">Mixins</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="context.html" title="previous chapter">Context</a></li>
+      <li>Next: <a href="mixins.html" title="next chapter">Mixins</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="application">
+<span id="id1"></span><h1>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>Application</strong> layer is responsible for collecting routes along with mounting and wrapping each
+action by route handler with the correct setup/teardown procedures.</p>
+<p>So far we have seen that we initialise the <strong>Application</strong> <strong>(app)</strong> using the DefaultApp app base class
+, provide the <strong>app</strong> with our desired <strong>Context</strong> and finally <strong>mount</strong> the <strong>app</strong>.</p>
+<p>We have also seen how we can create custom <strong>fixtures</strong> that we can include in our custom <strong>context</strong> (<strong>ctxd</strong>)
+which effectively make those fixture available to all <strong>actions</strong> using our <strong>ctx</strong></p>
+<p>So lets take a look at <strong>routes</strong> first of all.</p>
+<p>A <strong>route</strong> indexes our <strong>action</strong> within the current <strong>context</strong> so calls to our <strong>action</strong> will be routed
+correctly in all cases.</p>
+<p>In order to simplify this and to avoid having to set up a seperate <strong>routing table</strong> we have the
+<strong>&#64;app.route()</strong> decorator which allows us to define a route for a paticular action.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>effively sets up a route called ‘index’ inside our <strong>app</strong>.</p>
+<p>The next convenience decorator we nned to look at is the <strong>&#64;app.use()</strong> decorator.</p>
+<p>This decorator is used to activate/decativate/teardown any <strong>fixtures</strong> we have created for
+our <strong>index</strong> action.</p>
+<p>Most typically we would tell our app which form template to use by specifying the form name as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@action</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We could equally include any other fixture that we have created and add it to the list of <strong>fixtures</strong> that
+we want this particular action to use.</p>
+<p>So if we go back to our <strong>hello_world</strong> example where we created a fixture to track the number of times
+someone visited out app we could equally as well add that fixture ONLY to our <strong>index</strong> action as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visited</span> <span class="o">=</span> <span class="n">Visited</span><span class="p">()</span> <span class="c1">## our fixture</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="n">visited</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="n">visited</span><span class="o">.</span><span class="n">get_visits</span><span class="p">()</span> <span class="c1">## note we are accessing our fixture directly</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Hello Websaw World&#39;</span><span class="p">,</span> <span class="n">visited</span><span class="o">=</span><span class="n">visited</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and in this case we would not need to include it in the <strong>context</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Both the <strong>index</strong> and <strong>visited</strong> fixtures are initialised/loaded when the aciton is mounted and
+similarly torn down when we leave the action.</p>
+</div>
+<p>This makes for super efficient actions and provides unlimited flexibility when designing and
+running our <strong>app’s actions</strong>.</p>
+<p>Now that we have coeverd the three layers or pillars that make up the <em>Websaw</em> framework stack lets
+take a look at what all this can do for us.</p>
+<p>The first thing we are going to look at is the ability to <strong>create</strong> and <strong>re-use</strong> code forllowing
+the <strong>DRY</strong> coding pracitces.</p>
+<p><strong>DRY</strong> or <strong>Dont Repeat Yourself</strong> coding is extremely important when developing larger and more complex
+applications.</p>
+<p>Traditional web frameworks have generally involved a lot of code duplication whether or not it is html forms or
+similar actions used in multiple contollers.</p>
+<p><strong>Websaw</strong> overcomes this problem with the use of <strong>MIXINS</strong></p>
+<p>To find our more about <strong>mixins</strong> lets head over the <a class="reference internal" href="mixins.html#mixins"><span class="std std-ref">Mixins</span></a> section right now.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2022 WebSaw.
+      
+      |
+      <a href="_sources/application.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
