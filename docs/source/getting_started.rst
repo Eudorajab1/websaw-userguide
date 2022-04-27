@@ -83,7 +83,7 @@ In all cases it is just as easy to create both the apps folder and the hello_wor
 
 or by using your favourite IDE such as vscode.
 
-Now that we have got our app folder ready lets head over to `Websaw Workshop <https://websaw-workshop.readthedocs.io/en/latest/getting_started.html>`
+Now that we have got our app folder ready lets head over to `Websaw Workshop <https://websaw-workshop.readthedocs.io/en/latest/getting_started.html>`_
 to put everything to use.
 
 Once you have completed the first workshop you will have seen how the three main layers of 
