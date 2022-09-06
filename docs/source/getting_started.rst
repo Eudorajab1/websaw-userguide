@@ -173,7 +173,7 @@ If you get the following output Websaw has been installed and is ready to use.
         shell         Open a python shell with apps_folder's parent added to...
         version       Show versions and exit
 
-If not please refer to the :ref:`installation` section of this manual.
+If not please refer to the Installation section of this manual.
 
 So lets take a look at creating a new app and let us call that app hello_world.
 
