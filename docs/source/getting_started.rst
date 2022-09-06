@@ -130,8 +130,7 @@ The Docker container automatically pulls **PyjSaw**, **UPYTL** and **voodoodal**
     
 
 
-Assuming you have successfully installed *Websaw* by following the :ref:`installation_label` procedure you 
-should now have the following depending on the installation method you chose.
+Assuming you have successfully installed *Websaw* should now have the following depending on the installation method you chose.
 
 If you installed using pip:
 
@@ -146,6 +145,7 @@ If you have installed from source you need to ::
 
     cd websaw
 
+if you haver installed using a Docker container you have everything you need inside your dokcer container called websaw.
 
 Irrespective of installation method lets verify that *Websaw* has installed correctly as follows: 
 ::
@@ -173,7 +173,7 @@ If you get the following output Websaw has been installed and is ready to use.
         shell         Open a python shell with apps_folder's parent added to...
         version       Show versions and exit
 
-If not please refer to the :ref:`installation_label` section of this manual.
+If not please refer to the :ref:`installation` section of this manual.
 
 So lets take a look at creating a new app and let us call that app hello_world.
 
