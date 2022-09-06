@@ -4,7 +4,7 @@
 Fixtures
 ========
 
-As described in the :ref:`design_overview` section, **Fixtures** are *Websaw's* basic building blocks.
+As described in the :ref:`arch_overview` section, **Fixtures** are *Websaw's* basic building blocks.
 They can act as middleware (e.g. auth barrier or render routing action results using template)
 **OR** as services (e.g. provide database connections) or a combination of the two.
 

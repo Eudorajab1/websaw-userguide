@@ -1,1 +1,7 @@
 /* This file intentionally left blank. */
+.wy-nav-content {
+    max-width: auto !important; 
+}  
+.wy-menu-vertical a {
+    font-size: 100%;
+} 

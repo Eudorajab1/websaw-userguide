@@ -1,6 +1,8 @@
 from datetime import datetime
+import sphinx_rtd_theme
 
-extensions = []
+extensions = ['sphinx_rtd_theme',]
+
 templates_path = ["_templates"]
 source_suffix = ".rst"
 master_doc = "index"
@@ -11,27 +13,26 @@ copyright = u"%d WebSaw" % year
 
 exclude_patterns = ["_build"]
 
-html_theme = "alabaster"
+html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
+html_css_files = [
+    'css/custom.css',
+]
 
 
-html_sidebars = {
-    "**": [
-        "about.html",
-        "searchbox.html",
-        "navigation.html",
-        "relations.html",
-        
-#        "donate.html",
-    ]
-}
 html_theme_options = {
-    "logo": "websaw-logos_transparent.png",
-    "description": "A light, fully fucntional, ultra fast, flexible and feauture rich web framework",
-    "github_user": "Eudorajab1",
-    "fixed_sidebar": True,
-    "show_powered_by": False,
-    "show_related" : True,
-    #"github_banner" : True,
-    "tidelift_url": "https://tidelift.com/subscription/pkg/pypi-alabaster?utm_source=pypi-alabaster&utm_medium=referral&utm_campaign=docs",  # noqa
+    'logo_only': True,
+    'display_version': True,
+    'prev_next_buttons_location': 'bottom',
+    'style_external_links': False,
+    'vcs_pageview_mode': '',
+    'style_nav_header_background': 'teal',
+    # Toc options
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False
 }
+
+html_logo = '_static/websaw-logos_transparent.png'

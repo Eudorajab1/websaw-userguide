@@ -3,7 +3,133 @@
 
 Getting Started
 ===============
-   
+
+**WebSaw** can be used completely standalone to provide a fully funcitonal, feature rich, web frameowork.
+ 
+For more complex development requirements or to develop in a more pythonic way we reccomend you take a look at the 
+following complimentory libraries/packages which have been developed to integrate seamlessly with **Websaw**.
+
+.. important::
+    All the below work completely independantly of **WebSaw** and can be used standalone in their own right. There is no dependancy on **WebSaw** and no need
+    to use them with **WebSaw** but they definately do add value and improve on the whole developemtn experience.
+
+* For rapid **SPA** development **Pyjsaw** is an absolute must. This fully featured trasnpiler generates pure .JS apps using pythonic code.
+* **Voodoodal** wrapper for the industry standard **pydal** data access layer library providng a pythonic methods for table definition and DB access.
+
+**WebSaw** ships as standard with the **YATL** template renderer but we strongly reccomend installing **UPYTL** and using it insted of standard html templates
+as this allows us to create re-usable components without having to write a single line of HTML code as we will see later.
+
+**UPYTL** ships with a set of *standard* components which include all the html types as well as many of the industry standard database field types in order
+to get you up and running in a matter of minutes.
+
+**Advanced** or tailored components are available to enterprise clients for a minimal fee.
+
+Once again there is no need to install any of the above in order to use **WebSaw** but we strongly reccomend taking a look at the above.
+
+.. _installation_label:
+
+Installation
+------------
+*WebSaw* can be installed on most operating systems including Windows, Linux, MacOS and is totally OS agnostic.
+
+
+Requirements
+------------
+
+* Pyhton >= 3.8
+* pip
+* git
+
+.. important:: 
+    Depending on your operating system the installation commands vary slightly. For example: Windows, you must use backslashes (i.e. ``\``) 
+    instead of slashes. Please also ensure that you have python >= 3.8 installed along with pip and git and that are are in your os path. 
+
+* Installing from pip 
+* Installing from git repo locally (reccomended)
+* Installing for production
+* Installing user Docker
+  
+Installing using PyPi
+---------------------
+
+.. note::
+    Whilst not necessary, we strongly reccomend that you create a virtual environemnt on your OS before installing **WebSaw**. 
+    Relevant instructions on createint a virtual envirnonment for your OS are beyond the scope of this document.
+
+So lets start by taking a simple use case:
+
+For the sake of keeping the instructions generic let us assume that we are woking on a WSL Ubuntu
+type development environment.
+
+
+Creating a Virtual Environment
+------------------------------
+
+To do this you need to open a new bash / shell / cmd window and enter the following:-
+::
+
+    python3 -m venv <direcory_name>
+    cd <directory_name>
+    source ./bin/activate
+
+This above will create a python3 virtual environment and activiate it.
+
+If all is good your prompt will change to the name of the vitual environment you have activated: 
+::
+
+    (directory_name)$
+
+This is python’s way of telling us that we are now in the virtual environment and we can start installing Websaw.
+
+To deactive the virtual environment at any time simply use the following command: 
+::
+
+    deactivate
+
+This will take you back to your normal python bash prompt. For now lets keep the venv activated.
+
+::
+
+    pip install websaw
+
+Thats it you are good to go
+
+Installing from source locally
+------------------------------
+
+if you want to install into your local environment please do the following:
+
+:: 
+
+    git clone https://github.com/valq7711/websaw.git
+    cd websaw
+    pip install -e .
+
+Installing from source globally
+-------------------------------
+
+:: 
+
+    git clone https://github.com/valq7711/websaw.git
+    cd websaw
+
+
+Docker Compose
+--------------
+
+:: 
+
+    git clone https://github.com/valq7711/websaw.git
+    cd websaw
+    docker-compose up
+
+The Docker container automatically pulls **PyjSaw**, **UPYTL** and **voodoodal** which makes them all available.
+
+
+*We are now good to go* so lets get started buy heading over to the :ref:`getting_started` section
+    
+
+
 Assuming you have successfully installed *Websaw* by following the :ref:`installation_label` procedure you 
 should now have the following depending on the installation method you chose.
 
