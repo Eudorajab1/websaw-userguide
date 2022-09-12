@@ -158,13 +158,101 @@ In all cases it is just as easy to create both the apps folder and the hello_wor
     mkdir apps ## if does not exist
     cd apps
     touch . __init__py
-    mkdir hello_world
-    cd hello_world
+    mkdir <app_name>
+    cd <app_name>
     touch . __init__.py
 
 or by using your favourite IDE such as pyjsaw or vscode.
 
-Now that we have got our app folder it is time to head over to the appropriate secion depending on the **Type** of 
+Running Websaw
+--------------
+
+For Development purposes the traditional way to run **WebSaw** is from the command line as follows:
+::
+    # /websaw/<path to your apps folder>
+    
+    python -m websaw run <your apps folder name>
+
+This will attempt to start all applications in your apps folder by default (traditioanlly called apps) but you can store your apps in any 
+folder of your choice. Just make sure to let websaw know the root folder for your applications.
+
+Starting Websaw form the command line offers you many options to pass in paramters to change the behavbiour of your Websaw instance.
+
+For example::
+
+    python -m websaw run apps -H 0.0.0.0 -P 8010
+
+tells Websaw that we want it to run on IP 0.0.0.0 and Port 8010 and you will see the following:
+::
+
+    Ombott v0.0.13 server starting up (using RocketServer(reloader=False))...
+    Listening on http://0.0.0.0:8010/
+    Hit Ctrl-C to quit.
+
+    watching (lazy-mode) python file changes in: apps
+
+.. important::
+
+    By default Websaw will automatically detect any changes to any .py file in the apps structure and restart the server in order to reflect the latest changes.
+    You can use the --watch setting in the cli to change this behaviour.
+
+Websaw CLI
+----------
+
+In order to see the cli options available to you enter the following from inside your activared venv:
+::
+
+    python websaw --help
+
+this will show you the list of all available options that can be used with the Websaw Command Line.
+
+To get help on any of these options simply type::
+
+    websaw <command> --help
+    eg: python websaw run --help
+
+This will deisplay the following:-
+::
+
+    Usage: python -m websaw run [OPTIONS] APPS_FOLDER
+
+    Run all the applications on apps_folder
+
+    Options:
+    -Y, --yes                       No prompt, assume yes to questions
+                                    [default: False]
+    -H, --host TEXT                 Host name  [default: 127.0.0.1]
+    -P, --port INTEGER              Port number  [default: 8000]
+    -p, --password_file TEXT        File for the encrypted password  [default:
+                                    password.txt]
+    -s, --server [default|wsgiref|gunicorn|gevent|waitress|geventWebSocketServer|wsgirefThreadingServer|rocketServer]
+                                    server to use  [default: default]
+    -w, --number_workers INTEGER    Number of workers  [default: 0]
+    -d, --dashboard_mode TEXT       Dashboard mode: demo, readonly, full, none
+                                    [default: full]
+    --watch [off|sync|lazy]         Watch python changes and reload apps
+                                    automatically, modes: off, sync, lazy
+                                    [default: lazy]
+    --ssl_cert PATH                 SSL certificate file for HTTPS
+    --ssl_key PATH                  SSL key file for HTTPS
+    -help, -h, --help               Show this message and exit.
+
+The majority of thse CLI options should be self explanetory but there are a few *special* options that we will cover in greater deatail later on.
+
+Right now you should be able to start and stop Websaw from the command line and be in a position to get developing.
+
+.. note::
+    If you have opted to use a Docker container as your dev environment then when you activate the contrainer
+    **WebSaw** will automatically be running on the default host and port. In order to change this behavbiour
+    you can either customise the Docker file or the docker-compose.yml file to reflect your preferences.
+
+Alternatively you can enter the docker container using the following and effective run **WebSaw** from the command line as you would in any other environment.
+::
+    docker exec -it websaw /bin/bash
+
+which will take you into your container to the websaw directory.
+
+Now that we have got this far it is time to head over to the appropriate secion depending on the **Type** of 
 application your are looking to develop. 
 
 For *Client Side* or **SPA** application development please refer to :ref:`client_side` alternatively take a look at the :ref:`server_side` section of the user guide.
