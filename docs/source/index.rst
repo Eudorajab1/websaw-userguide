@@ -69,7 +69,10 @@ Main Features
 
    architecture_overview
    getting_started
+   client_side
+   server_side
    fixtures
    context
    application
    mixins
+   templating
