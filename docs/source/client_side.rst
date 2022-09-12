@@ -28,7 +28,7 @@ All futher processing/rendering is then performed by our **SPA** client side.
 Whilst there is nothing preventing us from coding our **SPA** in **Vue.js** directly or even vanilla .JS we will see how **PyJsaw** will simplify 
 this whole process for us and give us the ablilty to create stunning **SPA** apps quicky and sercurely.
 
-SSA Getting Started
+SPA Getting Started
 -------------------
 
 If you have followed the :ref:`installation_label` installation procedures as outlined in the :ref:`getting_started` section
