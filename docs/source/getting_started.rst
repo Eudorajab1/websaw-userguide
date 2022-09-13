@@ -148,7 +148,7 @@ If you get the following output Websaw has been installed and is ready to use.
         shell         Open a python shell with apps_folder's parent added to...
         version       Show versions and exit
 
-If not please refer to the ::ref:`installation_lable` section.
+If not please refer to the ::ref:`installation_label` section.
 
 The easiest way to do this is just copy the apps/scaffold folder or rename it to hello_world
 
